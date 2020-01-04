@@ -30,7 +30,10 @@ From there, you browse around the Wagtail admin.
 Changing existing code files should automatically refresh the server, but you may need to manually refresh browser pages to see the changes.
 
 ## Resources
+The following links are related to libraries/apps we have used to develop the site.
 
-User registration:
+[Wagtail CMS](https://Wagtail.io) is the main content management system/developer framework. Wagtail is built on [Django](https://djangoproject.com), which provides many common components for web applications.
+
+The following Django apps were used to create the website user registration process:
 - https://django-registration.readthedocs.io/en/3.0.1/
 - https://github.com/fusionbox/django-authtools
