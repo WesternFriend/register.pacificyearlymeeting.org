@@ -44,6 +44,17 @@ bcrypt = ["bcrypt"]
 
 [[package]]
 category = "main"
+description = "Custom user model app for Django featuring email as username and class-based views for authentication."
+name = "django-authtools"
+optional = false
+python-versions = "*"
+version = "1.7.0"
+
+[package.dependencies]
+Django = ">=1.11"
+
+[[package]]
+category = "main"
 description = "Django extension to allow working with 'clusters' of models as a single unit, independently of the database"
 name = "django-modelcluster"
 optional = false
@@ -291,7 +302,7 @@ python-versions = "*"
 version = "1.3"
 
 [metadata]
-content-hash = "51608ca181ba8e5e4cc4c59a0783b905354981f3c5582441cfcb88db1af7faf2"
+content-hash = "4100e1ee08755dc3e8e7170020c152b54bc75372cbad8fede1e66f95ae999f4d"
 python-versions = "^3.7"
 
 [metadata.files]
@@ -311,6 +322,9 @@ chardet = [
 django = [
     {file = "Django-2.2.9-py3-none-any.whl", hash = "sha256:687c37153486cf26c3fdcbdd177ef16de38dc3463f094b5f9c9955d91f277b14"},
     {file = "Django-2.2.9.tar.gz", hash = "sha256:662a1ff78792e3fd77f16f71b1f31149489434de4b62a74895bd5d6534e635a5"},
+]
+django-authtools = [
+    {file = "django-authtools-1.7.0.tar.gz", hash = "sha256:55180b23d7f7c40776a06f0ca8d612dd568d608ef0af256b0c5818eda1b5a261"},
 ]
 django-modelcluster = [
     {file = "django-modelcluster-5.0.tar.gz", hash = "sha256:a293a1875cb97c1b6e131f53857f0c47e297330c1b5df47737afa54bc10a967d"},
