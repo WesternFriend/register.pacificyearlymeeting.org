@@ -1,0 +1,5 @@
+Thanks for registering with the site!
+
+Please visit the following link within {{ expiration_days }} to complete your registration:
+
+{{ site.domain }}/accounts/activate/{{activation_key}}

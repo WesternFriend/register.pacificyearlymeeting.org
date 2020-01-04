@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'authtools',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -100,6 +101,9 @@ DATABASES = {
 }
 
 AUTH_USER_MODEL = 'accounts.User'
+ACCOUNT_ACTIVATION_DAYS = 14
+REGISTRATION_OPEN = True
+REGISTRATION_SALT = 'changeme'
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

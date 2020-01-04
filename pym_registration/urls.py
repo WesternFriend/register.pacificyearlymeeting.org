@@ -8,9 +8,18 @@ from wagtail.documents import urls as wagtaildocs_urls
 
 from search import views as search_views
 
+from django_registration.backends.activation.views import RegistrationView
+from accounts.forms import CustomUserForm
+
 urlpatterns = [
     url(r'^django-admin/', admin.site.urls),
-    url(r'^accounts/', include('django_registration.backends.one_step.urls')),
+    url(r'^accounts/register/$',
+        RegistrationView.as_view(
+            form_class=CustomUserForm
+        ),
+        name='django_registration_register',
+        ),
+    url(r'^accounts/', include('django_registration.backends.activation.urls')),
     url(r'^accounts/', include('django.contrib.auth.urls')),
 
     url(r'^admin/', include(wagtailadmin_urls)),
