@@ -3,8 +3,21 @@ Registration portal for Pacific Yearly Meeting.
 
 ## Initial project scope
 Data model/database model definitions:
-- registrant: someone who registers 
-- (user) account: someone who logs in to manage registrants
+- (user) **account**: someone who logs in to manage registrants
+- **registrant**: someone who is registered for PYM by an account holder
+- **payment**: online or offline payment, such as a check or online transaction
+- **allocation**: all or part of a payment applied to one or more registrants
+
+Data model constraints:
+- **registrant** is not marked as *paid* until one or more **payments** have been **allocated** to cover the registration cost
+- **payments** cannot be allocated to **registrants** in excess of payment amount
+
+User interface
+- *registrar* can manage all **registrant**, **payment**, and **allocation** records via the administration interface
+- *account* can submit one or more **registrant** forms once logged in
+- *account* will have a *balance due* which can be viewed when logged in
+  - *sum* of related registration costs **registrants** *minus* the *sum* of all **allocations** towards their **registrants**
+  - balance due can be paid online
 
 ## Development
 In order to run and develop this code locally, you will need a few system-wide dependencies installed:
