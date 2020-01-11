@@ -1,0 +1,16 @@
+from django.core.validators import MinValueValidator
+from django.db import models
+
+
+class Registrant(models.Model):
+    first_name = models.CharField(
+        max_length=255
+    )
+    last_name = models.CharField(
+        max_length=255
+    )
+    registration_cost = models.FloatField(
+        validators=[
+            MinValueValidator(0)
+        ]
+    )
