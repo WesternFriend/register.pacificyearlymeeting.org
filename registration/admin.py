@@ -11,7 +11,7 @@ class RegistrantModelAdmin(ModelAdmin):
 
     model = Registrant
     menu_label = "Registrants"
-    menu_icon = "fa-user"
+    menu_icon = "group"
     menu_order = 100
     add_to_settings_menu = False
     exclude_from_explorer = True
