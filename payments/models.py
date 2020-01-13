@@ -7,6 +7,11 @@ from registration.models import Registrant
 class Payment(models.Model):
     amount = models.FloatField()
 
+    paid_by = models.CharField(
+        max_length=255,
+        help_text="Name of person, meeting, or organization that made this payment."
+    )
+
 
 class RegistrantPayment(models.Model):
     registrant = models.ForeignKey(
