@@ -3,9 +3,20 @@ from django.db import models
 
 from registration.models import Registrant
 
+PAYMENT_SOURCE_CHOICES = [
+    ("online", "Online"),
+    ("check", "Check"),
+    ("cash", "Cash"),
+]
+
 
 class Payment(models.Model):
     amount = models.FloatField()
+
+    source = models.CharField(
+        max_length=255,
+        choices=PAYMENT_SOURCE_CHOICES,
+    )
 
     paid_by = models.CharField(
         max_length=255,
@@ -13,7 +24,7 @@ class Payment(models.Model):
     )
 
     def __str__(self):
-        return f"{ self.amount } paid by { self.paid_by }"
+        return f"ID #{self.id} - { self.amount } ({ self.source }) paid by { self.paid_by }"
 
 
 class RegistrantPayment(models.Model):
