@@ -12,31 +12,12 @@ class PaymentModelAdmin(ModelAdmin):
     model = Payment
     menu_label = "Payments"
     menu_icon = "tick"
-    menu_order = 110
+    menu_order = 102
     add_to_settings_menu = False
     exclude_from_explorer = True
     list_display = (
         "amount",
     )
-
-
-class RegistrantPaymentModelAdmin(ModelAdmin):
-    """Registrant model admin."""
-
-    model = RegistrantPayment
-    menu_label = "Registrant Payments"
-    menu_icon = "success"
-    menu_order = 120
-    add_to_settings_menu = False
-    exclude_from_explorer = True
-    list_display = (
-        "amount",
-        "from_payment",
-    )
-
-    def from_payment(self, obj):
-        return obj.payment
 
 
 modeladmin_register(PaymentModelAdmin)
-modeladmin_register(RegistrantPaymentModelAdmin)
