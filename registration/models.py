@@ -16,7 +16,7 @@ class Registrant(models.Model):
     )
 
     def full_name(self):
-        return f"{ self.first_name } { self.last_name }"
+        return f"{ self.first_name } { self.last_name } (${ self.registration_cost })"
 
     def __str__(self):
         return self.full_name()
