@@ -12,6 +12,9 @@ class Payment(models.Model):
         help_text="Name of person, meeting, or organization that made this payment."
     )
 
+    def __str__(self):
+        return f"{ self.amount } paid by { self.paid_by }"
+
 
 class RegistrantPayment(models.Model):
     registrant = models.ForeignKey(
