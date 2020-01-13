@@ -1,3 +1,4 @@
+from django.core.validators import MinValueValidator
 from django.db import models
 
 from registration.models import Registrant
@@ -17,4 +18,9 @@ class RegistrantPayment(models.Model):
         to=Payment,
         related_name="registrants",
         on_delete=models.PROTECT,
+    )
+    amount = models.FloatField(
+        validators=[
+            MinValueValidator(0)
+        ]
     )
