@@ -11,6 +11,7 @@ wagtail = "^2.7"
 django-authtools = "^1.7.0"
 django-registration = "^3.0.1"
 django-crispy-forms = "^1.8.1"
+wagtailfontawesome = "^1.1.4"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^3.7.9"

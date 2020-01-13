@@ -55,6 +55,7 @@ INSTALLED_APPS = [
 
     'authtools',
     'crispy_forms',
+    'wagtailfontawesome',
 ]
 
 MIDDLEWARE = [
