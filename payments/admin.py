@@ -30,8 +30,8 @@ class RegistrantPaymentModelAdmin(ModelAdmin):
     add_to_settings_menu = False
     exclude_from_explorer = True
     list_display = (
-        "paid_by",
         "amount",
+        "payment",
     )
 
 
