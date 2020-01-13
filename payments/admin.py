@@ -31,8 +31,11 @@ class RegistrantPaymentModelAdmin(ModelAdmin):
     exclude_from_explorer = True
     list_display = (
         "amount",
-        "payment",
+        "from_payment",
     )
+
+    def from_payment(self, obj):
+        return obj.payment
 
 
 modeladmin_register(PaymentModelAdmin)
