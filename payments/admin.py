@@ -11,7 +11,7 @@ class PaymentModelAdmin(ModelAdmin):
 
     model = Payment
     menu_label = "Payments"
-    menu_icon = "tick"
+    menu_icon = "fa-money"
     menu_order = 102
     add_to_settings_menu = False
     exclude_from_explorer = True
