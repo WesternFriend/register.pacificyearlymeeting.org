@@ -17,7 +17,11 @@ class RegistrantModelAdmin(ModelAdmin):
     exclude_from_explorer = True
     list_display = (
         "full_name",
-        "registration_cost"
+        "registration_cost",
+        "needs_ada_accessible_accommodations"
+    )
+    list_filter = (
+        "needs_ada_accessible_accommodations",
     )
     search_fields = (
         "first_name",
