@@ -16,6 +16,10 @@ PAYMENT_SOURCE_CHOICES = [
 
 
 class Payment(ClusterableModel):
+    """
+    Represents a payment made,
+    E.g. a check that was paid
+    """
     amount = models.FloatField(
         help_text="Amount for this payment, in USD ($)"
     )
@@ -43,6 +47,9 @@ class Payment(ClusterableModel):
 
 
 class RegistrantPayment(models.Model):
+    """
+    Represents a portion of a payment that is applied to a registrant balance due
+    """
     registrant = models.ForeignKey(
         to=Registrant,
         related_name="registrant",
