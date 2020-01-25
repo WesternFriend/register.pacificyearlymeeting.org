@@ -35,4 +35,4 @@ class Registrant(models.Model):
 
 
 class RegistrationPage(Page):
-    pass
+    max_count = 1
