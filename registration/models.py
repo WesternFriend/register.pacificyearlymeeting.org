@@ -1,6 +1,8 @@
 from django.core.validators import MinValueValidator
 from django.db import models
 
+from wagtail.core.models import Page
+
 
 class Registrant(models.Model):
     """
@@ -11,6 +13,11 @@ class Registrant(models.Model):
     )
     last_name = models.CharField(
         max_length=255
+    )
+    email = models.EmailField(
+        help_text="Personal email for this registrant, if applicable.",
+        null=True,
+        blank=True,
     )
     needs_ada_accessible_accommodations = models.BooleanField()
 
@@ -25,3 +32,7 @@ class Registrant(models.Model):
 
     def __str__(self):
         return self.full_name()
+
+
+class RegistrationPage(Page):
+    pass
