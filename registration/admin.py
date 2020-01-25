@@ -11,12 +11,13 @@ class RegistrantModelAdmin(ModelAdmin):
 
     model = Registrant
     menu_label = "Registrants"
-    menu_icon = "group"
+    menu_icon = "fa-address-book"
     menu_order = 101
     add_to_settings_menu = False
     exclude_from_explorer = True
     list_display = (
         "full_name",
+        "email",
         "registration_cost",
         "needs_ada_accessible_accommodations"
     )
@@ -26,6 +27,7 @@ class RegistrantModelAdmin(ModelAdmin):
     search_fields = (
         "first_name",
         "last_name",
+        "email",
     )
 
 
