@@ -1,6 +1,8 @@
 from django.core.validators import MinValueValidator
 from django.db import models
 
+from wagtail.admin.edit_handlers import FieldPanel
+from wagtail.core.fields import RichTextField
 from wagtail.core.models import Page
 
 
@@ -35,4 +37,10 @@ class Registrant(models.Model):
 
 
 class RegistrationPage(Page):
+    intro = RichTextField(null=True, blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel("intro"),
+    ]
+
     max_count = 1
