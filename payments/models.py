@@ -52,7 +52,7 @@ class Allocation(models.Model):
     """
     registrant = models.ForeignKey(
         to=Registrant,
-        related_name="registrant",
+        related_name="payment_allocations",
         on_delete=models.PROTECT,
     )
     payment = ParentalKey(
