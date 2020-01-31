@@ -28,3 +28,7 @@ class AccommodationPrice(models.Model):
         decimal_places=2,
         max_digits=10
     )
+
+    class Meta:
+        db_table = "accommodation_price"
+        unique_together = ("accommodation", "age_group")
