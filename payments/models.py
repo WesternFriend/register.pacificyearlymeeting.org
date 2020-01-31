@@ -46,7 +46,7 @@ class Payment(ClusterableModel):
         return f"ID #{self.id} - { self.amount } ({ self.source }) paid by { self.paid_by }"
 
 
-class RegistrantPayment(models.Model):
+class Allocation(models.Model):
     """
     Represents a portion of a payment that is applied to a registrant balance due
     """
