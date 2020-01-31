@@ -57,7 +57,7 @@ class Allocation(models.Model):
     )
     payment = ParentalKey(
         to=Payment,
-        related_name="registrant_payments",
+        related_name="allocations",
         on_delete=models.PROTECT,
         help_text="Choose a registrant to which this payment should be applied"
     )
