@@ -3,7 +3,7 @@ from wagtail.contrib.modeladmin.options import (
     modeladmin_register
 )
 
-from dietary_needs.models import DietaryNeed, MealOption
+from food.models import DietaryNeed, MealOption
 
 
 class DietaryNeedModelAdmin(ModelAdmin):
