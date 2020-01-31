@@ -39,7 +39,7 @@ class Payment(ClusterableModel):
         FieldPanel("paid_by"),
         FieldPanel("source"),
         FieldPanel("amount"),
-        InlinePanel("registrant_payments", heading="Applied to registrants"),
+        InlinePanel("allocations", heading="Allocated to registrants"),
     ]
 
     def __str__(self):
