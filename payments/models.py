@@ -66,7 +66,9 @@ class Allocation(models.Model):
         on_delete=models.PROTECT,
         help_text="Choose a registrant to which this payment should be applied"
     )
-    amount = models.FloatField(
+    amount = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
         validators=[
             MinValueValidator(0)
         ]
