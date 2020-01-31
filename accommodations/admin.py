@@ -37,6 +37,10 @@ class AccommodationPriceModelAdmin(ModelAdmin):
         "age_group",
         "price",
     )
+    list_filter = (
+        "accommodation",
+        "age_group",
+    )
 
 
 modeladmin_register(AccommodationPriceModelAdmin)
