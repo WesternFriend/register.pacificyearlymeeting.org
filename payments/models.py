@@ -20,8 +20,13 @@ class Payment(ClusterableModel):
     Represents a payment made,
     E.g. a check that was paid
     """
-    amount = models.FloatField(
-        help_text="Amount for this payment, in USD ($)"
+    amount = models.DecimalField(
+        help_text="Amount for this payment, in USD ($)",
+        max_digits=10,
+        decimal_places=2,
+        validators=[
+            MinValueValidator(0)
+        ]
     )
 
     source = models.CharField(
