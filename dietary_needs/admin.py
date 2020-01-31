@@ -3,7 +3,7 @@ from wagtail.contrib.modeladmin.options import (
     modeladmin_register
 )
 
-from dietary_needs.models import DietaryNeed
+from dietary_needs.models import DietaryNeed, MealOption
 
 
 class DietaryNeedModelAdmin(ModelAdmin):
@@ -21,3 +21,20 @@ class DietaryNeedModelAdmin(ModelAdmin):
 
 
 modeladmin_register(DietaryNeedModelAdmin)
+
+
+class MealOptionModelAdmin(ModelAdmin):
+    """Manage age groups."""
+
+    model = MealOption
+    menu_label = "Meal options"
+    menu_icon = "fa-cutlery"
+    menu_order = 102
+    add_to_settings_menu = False
+    exclude_from_explorer = True
+    list_display = (
+        "name",
+    )
+
+
+modeladmin_register(MealOptionModelAdmin)
