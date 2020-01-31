@@ -26,7 +26,6 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 INSTALLED_APPS = [
     'accommodations',
     'accounts',
-    'age_groups',
     'dietary_needs',
     'home',
     'payments',
