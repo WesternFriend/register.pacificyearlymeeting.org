@@ -7,7 +7,7 @@ from age_groups.models import AgeGroup
 
 
 class AgeGroupModelAdmin(ModelAdmin):
-    """Registrant model admin."""
+    """Manage age groups."""
 
     model = AgeGroup
     menu_label = "Age groups"

@@ -7,7 +7,7 @@ from payments.models import Payment
 
 
 class PaymentModelAdmin(ModelAdmin):
-    """Registrant model admin."""
+    """Manage payments."""
 
     model = Payment
     menu_label = "Payments"
