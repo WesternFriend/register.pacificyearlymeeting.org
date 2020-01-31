@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'accommodations',
     'accounts',
     'dietary_needs',
+    'event_days',
     'home',
     'payments',
     'registration',
