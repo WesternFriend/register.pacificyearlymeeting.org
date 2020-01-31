@@ -19,11 +19,6 @@ class AccommodationPrice(models.Model):
         on_delete=models.PROTECT,
         related_name="accommodation_prices"
     )
-    age_group = models.ForeignKey(
-        to="age_groups.AgeGroup",
-        on_delete=models.PROTECT,
-        related_name="accommodation_prices"
-    )
     price = models.DecimalField(
         decimal_places=2,
         max_digits=10
@@ -31,7 +26,6 @@ class AccommodationPrice(models.Model):
 
     class Meta:
         db_table = "accommodation_price"
-        unique_together = ("accommodation", "age_group")
 
     def __str__(self):
         return f"{ self.accommodation } for age group { self.age_group }"
