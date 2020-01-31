@@ -32,3 +32,6 @@ class AccommodationPrice(models.Model):
     class Meta:
         db_table = "accommodation_price"
         unique_together = ("accommodation", "age_group")
+
+    def __str__(self):
+        return f"{ self.accommodation } for age group { self.age_group }"
