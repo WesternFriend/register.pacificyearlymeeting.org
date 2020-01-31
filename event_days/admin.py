@@ -19,6 +19,7 @@ class EventDayModelAdmin(ModelAdmin):
         "date",
         "partial_day_discount",
     )
+    ordering = ("date",)
 
 
 modeladmin_register(EventDayModelAdmin)
