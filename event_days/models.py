@@ -14,3 +14,6 @@ class EventDay(models.Model):
 
     class Meta:
         db_table = "event_day"
+
+    def __str__(self):
+        return self.date.strftime("%A, %B %d, %Y")
