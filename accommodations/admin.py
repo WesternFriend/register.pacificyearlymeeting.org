@@ -34,12 +34,10 @@ class AccommodationPriceModelAdmin(ModelAdmin):
     exclude_from_explorer = True
     list_display = (
         "accommodation",
-        "age_group",
         "price",
     )
     list_filter = (
         "accommodation",
-        "age_group",
     )
 
 

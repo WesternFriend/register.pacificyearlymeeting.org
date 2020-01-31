@@ -28,4 +28,4 @@ class AccommodationPrice(models.Model):
         db_table = "accommodation_price"
 
     def __str__(self):
-        return f"{ self.accommodation } for age group { self.age_group }"
+        return f"{ self.accommodation }"
