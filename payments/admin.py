@@ -3,7 +3,7 @@ from wagtail.contrib.modeladmin.options import (
     modeladmin_register
 )
 
-from payments.models import Payment, RegistrantPayment
+from payments.models import Payment
 
 
 class PaymentModelAdmin(ModelAdmin):
