@@ -16,6 +16,12 @@ class Registrant(models.Model):
     last_name = models.CharField(
         max_length=255
     )
+    age = models.IntegerField(
+        help_text="Age at time of the event.",
+        validators=[
+            MinValueValidator(0)
+        ]
+    )
     email = models.EmailField(
         help_text="Personal email for this registrant, if applicable.",
         null=True,
