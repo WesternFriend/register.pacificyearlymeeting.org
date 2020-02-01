@@ -19,7 +19,7 @@ class AccommodationPrice(models.Model):
         on_delete=models.PROTECT,
         related_name="accommodation_prices"
     )
-    price = models.DecimalField(
+    daily_price = models.DecimalField(
         decimal_places=2,
         max_digits=10
     )
