@@ -35,7 +35,7 @@ Once those dependencies have been installed, use the following steps to clone an
 5. set up a local sqlite database with `python manage.py migrate`
 6. create a superuser with `python manage.py createsuperuser`
 7. run the server with `python manage.py runserver`
-8. visit the site at https://localhost:8000
+8. visit the site at https://localhost:8000/admin
 9. log in with your superuser account
 
 From there, you browse around the Wagtail admin.
