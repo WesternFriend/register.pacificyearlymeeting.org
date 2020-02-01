@@ -37,8 +37,11 @@ class AccommodationFeeModelAdmin(ModelAdmin):
     add_to_settings_menu = False
     exclude_from_explorer = True
     list_display = (
+        "age_min",
+        "age_max",
         "accommodation",
-        "fee",
+        "daily_fee",
+        "full_week_fee"
     )
     list_filter = (
         "accommodation",
