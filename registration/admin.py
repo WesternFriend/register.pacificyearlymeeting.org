@@ -18,7 +18,6 @@ class RegistrantModelAdmin(ModelAdmin):
     list_display = (
         "full_name",
         "email",
-        "registration_cost",
         "needs_ada_accessible_accommodations",
         "calculated_registration_fee",
         "is_full_week_attender",
@@ -27,7 +26,7 @@ class RegistrantModelAdmin(ModelAdmin):
         "overnight_accommodations",
         "needs_ada_accessible_accommodations",
         "attending_memorial_meeting_only",
-        "days_attending"
+        "days_attending",
     )
     search_fields = (
         "first_name",
