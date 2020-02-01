@@ -54,7 +54,7 @@ class Registrant(models.Model):
 
         return sum(partial_day_discounts)
 
-    def calculated_registration_fee(self):
+    def registration_fee(self):
         days_attending = self.days_attending.all()
 
         number_of_days_attending = len(days_attending)
