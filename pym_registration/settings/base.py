@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'food',
     'home',
     'payments',
+    'programs',
     'registration',
     'search',
 
