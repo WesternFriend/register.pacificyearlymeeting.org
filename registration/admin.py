@@ -22,7 +22,7 @@ class RegistrantModelAdmin(ModelAdmin):
         "needs_ada_accessible_accommodations",
         "is_full_week_attender",
         "total_partial_day_discount",
-        "calculated_registration_fee",
+        "registration_fee",
     )
     list_filter = (
         "overnight_accommodations",
