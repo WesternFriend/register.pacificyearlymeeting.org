@@ -40,9 +40,16 @@ There is a some kind of "tree" of options for people to select (reflected in the
         options in this field are determined by age eligibility, but do not affect registration cost
 
 ## Further reading
+## Python
+https://docs.python.org/3/reference/datamodel.html
+
+### Django
 https://docs.djangoproject.com/en/3.0/ref/forms/fields/#booleanfield
 https://docs.djangoproject.com/en/3.0/ref/forms/widgets/
 https://docs.djangoproject.com/en/3.0/topics/db/examples/many_to_many/
+
+### Wagtail
+http://docs.wagtail.io/en/latest/reference/contrib/modeladmin/indexview.html
 
 ## Yummy tea
 https://www.adagio.com/
