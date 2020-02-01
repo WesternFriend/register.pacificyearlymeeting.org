@@ -50,7 +50,7 @@ class AccommodationFee(models.Model):
         max_digits=10,
     )
     daily_fee = models.DecimalField(
-        default=True,
+        default=0,
         decimal_places=2,
         max_digits=10
     )
