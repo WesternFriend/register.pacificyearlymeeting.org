@@ -3,7 +3,7 @@ from wagtail.contrib.modeladmin.options import (
     modeladmin_register
 )
 
-from accommodations.models import Accommodation, AccommodationPrice
+from accommodations.models import Accommodation
 
 
 class AccommodationModelAdmin(ModelAdmin):
@@ -21,24 +21,3 @@ class AccommodationModelAdmin(ModelAdmin):
 
 
 modeladmin_register(AccommodationModelAdmin)
-
-
-class AccommodationPriceModelAdmin(ModelAdmin):
-    """Registrant model admin."""
-
-    model = AccommodationPrice
-    menu_label = "Prices"
-    menu_icon = "fa-usd"
-    menu_order = 102
-    add_to_settings_menu = False
-    exclude_from_explorer = True
-    list_display = (
-        "accommodation",
-        "price",
-    )
-    list_filter = (
-        "accommodation",
-    )
-
-
-modeladmin_register(AccommodationPriceModelAdmin)
