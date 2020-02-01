@@ -40,11 +40,14 @@ class AccommodationFeeModelAdmin(ModelAdmin):
         "age_min",
         "age_max",
         "accommodation",
+        "full_week_fee",
         "daily_fee",
-        "full_week_fee"
+
     )
     list_filter = (
         "accommodation",
+        "age_min",
+        "age_max",
     )
 
 
