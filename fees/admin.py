@@ -7,10 +7,10 @@ from fees.models import DayAttenderFee, AccommodationPrice
 
 
 class DayAttenderFeeModelAdmin(ModelAdmin):
-    """Manage DayAttenderFees."""
+    """Manage day attender fees."""
 
     model = DayAttenderFee
-    menu_label = "Day attender fees"
+    menu_label = "Day attender prices"
     menu_icon = "fa-money"
     menu_order = 102
     add_to_settings_menu = False
@@ -26,7 +26,7 @@ modeladmin_register(DayAttenderFeeModelAdmin)
 
 
 class AccommodationPriceModelAdmin(ModelAdmin):
-    """Registrant model admin."""
+    """Accommodation price model admin."""
 
     model = AccommodationPrice
     menu_label = "Prices"
