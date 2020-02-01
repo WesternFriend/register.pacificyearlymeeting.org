@@ -11,7 +11,7 @@ class AccommodationModelAdmin(ModelAdmin):
 
     model = Accommodation
     menu_label = "Accommodations"
-    menu_icon = "fa-home"
+    menu_icon = "fa-bed"
     menu_order = 102
     add_to_settings_menu = False
     exclude_from_explorer = True
