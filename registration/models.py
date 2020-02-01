@@ -46,7 +46,6 @@ class Registrant(models.Model):
         FieldPanel("email"),
         FieldPanel("attending_memorial_meeting_only"),
         FieldPanel("needs_ada_accessible_accommodations"),
-        FieldPanel("attending_full_week"),
         FieldPanel("days_attending",
                    widget=forms.CheckboxSelectMultiple)
     ]
