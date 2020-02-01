@@ -27,14 +27,32 @@ class DayAttenderFee(models.Model):
 
 
 class AccommodationFee(models.Model):
+    age_min = models.IntegerField(
+        default=0,
+        validators=[
+            MinValueValidator(0)
+        ]
+    )
+    age_max = models.IntegerField(
+        default=0,
+        validators=[
+            MinValueValidator(0)
+        ]
+    )
     accommodation = models.ForeignKey(
         to="accommodations.Accommodation",
         on_delete=models.PROTECT,
         related_name="accommodation_prices"
     )
     daily_fee = models.DecimalField(
+        default=True,
         decimal_places=2,
         max_digits=10
+    )
+    full_week_fee = models.DecimalField(
+        default=0,
+        decimal_places=2,
+        max_digits=10,
     )
 
     class Meta:
