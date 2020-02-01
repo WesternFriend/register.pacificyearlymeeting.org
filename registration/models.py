@@ -37,11 +37,6 @@ class Registrant(models.Model):
         "event_days.EventDay", blank=True, default=True)
     overnight_accommodations = models.ForeignKey(
         "accommodations.Accommodation", on_delete=models.PROTECT, null=True, blank=True)
-    registration_cost = models.FloatField(
-        validators=[
-            MinValueValidator(0)
-        ]
-    )
 
     def is_full_week_attender(self):
         total_event_days = EventDay.objects.count()
@@ -90,11 +85,10 @@ class Registrant(models.Model):
         FieldPanel("days_attending",
                    widget=forms.CheckboxSelectMultiple),
         FieldPanel("overnight_accommodations"),
-        FieldPanel("registration_cost"),
     ]
 
     def full_name(self):
-        return f"{ self.first_name } { self.last_name } (${ self.registration_cost })"
+        return f"{ self.first_name } { self.last_name }"
 
     def __str__(self):
         return self.full_name()
