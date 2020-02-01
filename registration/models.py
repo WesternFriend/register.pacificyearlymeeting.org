@@ -48,6 +48,12 @@ class Registrant(models.Model):
 
         return False
 
+    def total_partial_day_discount(self):
+        partial_day_discounts = [
+            day.partial_day_discount for day in self.days_attending.all()]
+
+        return sum(partial_day_discounts)
+
     def calculated_registration_fee(self):
         days_attending = self.days_attending.all()
 
@@ -70,10 +76,7 @@ class Registrant(models.Model):
 
             # daily attenders have day rate multiplied by days attending
             # they also qualify for daily discount based on partial days
-            partial_day_discounts = [
-                day.partial_day_discount for day in days_attending]
-
-            total_partial_day_discount = sum(daily_discounts)
+            total_partial_day_discount = self.total_partial_day_discount()
 
             return relevant_accommodation_fee.daily_fee * number_of_days_attending - total_partial_day_discount
 
