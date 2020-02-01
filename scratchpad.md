@@ -39,10 +39,14 @@ There is a some kind of "tree" of options for people to select (reflected in the
     Program selection (e.g. Children's Program, JYM, YAF)
         options in this field are determined by age eligibility, but do not affect registration cost
 
-Further reading:
+## Further reading
 https://docs.djangoproject.com/en/3.0/ref/forms/fields/#booleanfield
 https://docs.djangoproject.com/en/3.0/ref/forms/widgets/
 https://docs.djangoproject.com/en/3.0/topics/db/examples/many_to_many/
 
+## Yummy tea
 https://www.adagio.com/
 https://www.adagio.com/green/genmai_cha.html
+
+## Initial price structure
+https://docs.google.com/document/d/1a8F0Y_5WH-iZDLeKKZwQgbaerVlgRFQ7woIOsQ7Ixs0/edit
