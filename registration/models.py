@@ -1,3 +1,4 @@
+from django import forms
 from django.core.validators import MinValueValidator
 from django.db import models
 
@@ -27,13 +28,28 @@ class Registrant(models.Model):
         null=True,
         blank=True,
     )
+    attending_memorial_meeting_only = models.BooleanField(default=False)
     needs_ada_accessible_accommodations = models.BooleanField()
+    days_attending = models.ManyToManyField(
+        "event_days.EventDay", blank=True, default=True)
 
     registration_cost = models.FloatField(
         validators=[
             MinValueValidator(0)
         ]
     )
+
+    panels = [
+        FieldPanel("first_name"),
+        FieldPanel("last_name"),
+        FieldPanel("age"),
+        FieldPanel("email"),
+        FieldPanel("attending_memorial_meeting_only"),
+        FieldPanel("needs_ada_accessible_accommodations"),
+        FieldPanel("attending_full_week"),
+        FieldPanel("days_attending",
+                   widget=forms.CheckboxSelectMultiple)
+    ]
 
     def full_name(self):
         return f"{ self.first_name } { self.last_name } (${ self.registration_cost })"
