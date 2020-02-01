@@ -24,3 +24,21 @@ class DayAttenderFee(models.Model):
 
     def __str__(self):
         return f"Age: {self.age_min} to {self.age_max}. Daily fee: {self.daily_fee}"
+
+
+class AccommodationPrice(models.Model):
+    accommodation = models.ForeignKey(
+        to="accommodations.Accommodation",
+        on_delete=models.PROTECT,
+        related_name="accommodation_prices"
+    )
+    daily_price = models.DecimalField(
+        decimal_places=2,
+        max_digits=10
+    )
+
+    class Meta:
+        db_table = "accommodation_price"
+
+    def __str__(self):
+        return f"{ self.accommodation }"
