@@ -49,6 +49,10 @@ class AccommodationFeeModelAdmin(ModelAdmin):
         "age_min",
         "age_max",
     )
+    ordering = (
+        "age_min",
+        "accommodation",
+    )
 
 
 class FeesModelAdminGroup(ModelAdminGroup):
