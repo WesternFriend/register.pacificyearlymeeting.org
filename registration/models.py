@@ -40,6 +40,9 @@ class Registrant(models.Model):
         ]
     )
 
+    def calculated_registration_cost(self):
+        return "One million dollars!"
+
     panels = [
         FieldPanel("first_name"),
         FieldPanel("last_name"),

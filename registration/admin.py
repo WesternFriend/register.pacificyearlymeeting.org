@@ -20,6 +20,7 @@ class RegistrantModelAdmin(ModelAdmin):
         "email",
         "registration_cost",
         "needs_ada_accessible_accommodations"
+        "calculated_registration_cost",
     )
     list_filter = (
         "needs_ada_accessible_accommodations",
