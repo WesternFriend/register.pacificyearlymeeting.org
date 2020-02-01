@@ -53,6 +53,7 @@ class Registrant(models.Model):
         FieldPanel("days_attending",
                    widget=forms.CheckboxSelectMultiple),
         FieldPanel("overnight_accommodations"),
+        FieldPanel("registration_cost"),
     ]
 
     def full_name(self):
