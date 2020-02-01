@@ -44,15 +44,15 @@ class AccommodationFee(models.Model):
         on_delete=models.PROTECT,
         related_name="accommodation_prices"
     )
-    daily_fee = models.DecimalField(
-        default=True,
-        decimal_places=2,
-        max_digits=10
-    )
     full_week_fee = models.DecimalField(
         default=0,
         decimal_places=2,
         max_digits=10,
+    )
+    daily_fee = models.DecimalField(
+        default=True,
+        decimal_places=2,
+        max_digits=10
     )
 
     class Meta:
