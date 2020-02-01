@@ -16,10 +16,13 @@ class EventDayModelAdmin(ModelAdmin):
     add_to_settings_menu = False
     exclude_from_explorer = True
     list_display = (
-        "date",
+        "event_date_with_day",
         "partial_day_discount",
     )
     ordering = ("date",)
+
+    def event_date_with_day(self, event_day):
+        return event_day
 
 
 modeladmin_register(EventDayModelAdmin)
