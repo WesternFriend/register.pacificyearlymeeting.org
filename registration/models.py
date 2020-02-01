@@ -32,7 +32,8 @@ class Registrant(models.Model):
     needs_ada_accessible_accommodations = models.BooleanField()
     days_attending = models.ManyToManyField(
         "event_days.EventDay", blank=True, default=True)
-
+    overnight_accommodations = models.ForeignKey(
+        "accommodations.Accommodation", on_delete=models.PROTECT, null=True, blank=True)
     registration_cost = models.FloatField(
         validators=[
             MinValueValidator(0)
@@ -47,7 +48,8 @@ class Registrant(models.Model):
         FieldPanel("attending_memorial_meeting_only"),
         FieldPanel("needs_ada_accessible_accommodations"),
         FieldPanel("days_attending",
-                   widget=forms.CheckboxSelectMultiple)
+                   widget=forms.CheckboxSelectMultiple),
+        FieldPanel("overnight_accommodations"),
     ]
 
     def full_name(self):
