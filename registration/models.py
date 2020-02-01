@@ -49,7 +49,9 @@ class Registrant(models.Model):
         return False
 
     def calculated_registration_fee(self):
-        number_of_days_attending = self.days_attending.count()
+        days_attending = self.days_attending.all()
+
+        number_of_days_attending = len(days_attending)
 
         if self.attending_memorial_meeting_only:
             # Memorial-only attendees are free
@@ -62,10 +64,18 @@ class Registrant(models.Model):
                 accommodation=self.overnight_accommodations,
             )
 
+            # full week attenders have specific fee
             if self.is_full_week_attender():
                 return relevant_accommodation_fee.full_week_fee
 
-            return relevant_accommodation_fee.daily_fee * number_of_days_attending
+            # daily attenders have day rate multiplied by days attending
+            # they also qualify for daily discount based on partial days
+            partial_day_discounts = [
+                day.partial_day_discount for day in days_attending]
+
+            total_partial_day_discount = sum(daily_discounts)
+
+            return relevant_accommodation_fee.daily_fee * number_of_days_attending - total_partial_day_discount
 
         # Default to day attender fee
         relevant_day_attender_fee = DayAttenderFee.objects.get(
