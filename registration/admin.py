@@ -12,7 +12,7 @@ class RegistrantModelAdmin(ModelAdmin):
     model = Registrant
     menu_label = "Registrants"
     menu_icon = "fa-address-book"
-    menu_order = 101
+    menu_order = 201
     add_to_settings_menu = False
     exclude_from_explorer = True
     list_display = (
