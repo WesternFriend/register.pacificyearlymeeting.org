@@ -17,10 +17,11 @@ class RegistrantModelAdmin(ModelAdmin):
     exclude_from_explorer = True
     list_display = (
         "full_name",
+        "age",
         "email",
         "needs_ada_accessible_accommodations",
-        "calculated_registration_fee",
         "is_full_week_attender",
+        "calculated_registration_fee",
     )
     list_filter = (
         "overnight_accommodations",
