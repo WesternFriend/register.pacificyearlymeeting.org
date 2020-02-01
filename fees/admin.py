@@ -3,14 +3,14 @@ from wagtail.contrib.modeladmin.options import (
     modeladmin_register
 )
 
-from fees.models import DayAttenderFee, AccommodationPrice
+from fees.models import DayAttenderFee, AccommodationFee
 
 
 class DayAttenderFeeModelAdmin(ModelAdmin):
     """Manage day attender fees."""
 
     model = DayAttenderFee
-    menu_label = "Day attender prices"
+    menu_label = "Day attender fees"
     menu_icon = "fa-money"
     menu_order = 102
     add_to_settings_menu = False
@@ -25,22 +25,22 @@ class DayAttenderFeeModelAdmin(ModelAdmin):
 modeladmin_register(DayAttenderFeeModelAdmin)
 
 
-class AccommodationPriceModelAdmin(ModelAdmin):
+class AccommodationFeeModelAdmin(ModelAdmin):
     """Accommodation price model admin."""
 
-    model = AccommodationPrice
-    menu_label = "Prices"
+    model = AccommodationFee
+    menu_label = "Accommodation fees"
     menu_icon = "fa-usd"
     menu_order = 102
     add_to_settings_menu = False
     exclude_from_explorer = True
     list_display = (
         "accommodation",
-        "price",
+        "fee",
     )
     list_filter = (
         "accommodation",
     )
 
 
-modeladmin_register(AccommodationPriceModelAdmin)
+modeladmin_register(AccommodationFeeModelAdmin)
