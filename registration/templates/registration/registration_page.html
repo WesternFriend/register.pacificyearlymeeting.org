@@ -9,6 +9,9 @@
 
 {{ page.intro | richtext }}
 
-{{ registration_form.as_p }}
-
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ registration_form.as_p }}
+    <button type="submit">Register</button>
+</form>
 {% endblock content %}

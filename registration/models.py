@@ -1,6 +1,8 @@
 from django import forms
+from django.contrib import messages
 from django.core.validators import MinValueValidator
 from django.db import models
+from django.shortcuts import redirect
 
 from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.core.fields import RichTextField
@@ -117,6 +119,7 @@ class RegistrationPage(Page):
     max_count = 1
 
     def get_context(self, request, *args, **kwargs):
+        # Avoid circular dependency
         from registration.forms import RegistrationForm
 
         context = super().get_context(request)
@@ -124,3 +127,21 @@ class RegistrationPage(Page):
         context["registration_form"] = RegistrationForm
 
         return context
+
+    def serve(self, request, *args, **kwargs):
+        # Avoid circular dependency
+        from registration.forms import RegistrationForm
+
+        if request.method == "POST":
+            print("registration form submitted")
+            print(request.POST)
+            registration_form = RegistrationForm(request.POST)
+
+            if registration_form.is_valid():
+                registration = registration_form.save()
+
+                messages.success(request, 'Registration added successfully!')
+
+                return redirect("/")
+        else:
+            return super().serve(request)
