@@ -133,8 +133,6 @@ class RegistrationPage(Page):
         from registration.forms import RegistrationForm
 
         if request.method == "POST":
-            print("registration form submitted")
-            print(request.POST)
             registration_form = RegistrationForm(request.POST)
 
             if registration_form.is_valid():
