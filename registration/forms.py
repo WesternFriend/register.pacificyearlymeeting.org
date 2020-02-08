@@ -7,3 +7,6 @@ class RegistrationForm(forms.ModelForm):
     class Meta:
         model = Registrant
         exclude = ()
+        widgets = {
+            "days_attending": forms.CheckboxSelectMultiple()
+        }
