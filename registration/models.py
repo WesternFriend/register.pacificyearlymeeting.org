@@ -115,3 +115,12 @@ class RegistrationPage(Page):
     ]
 
     max_count = 1
+
+    def get_context(self, request, *args, **kwargs):
+        from registration.forms import RegistrationForm
+
+        context = super().get_context(request)
+
+        context["registration_form"] = RegistrationForm
+
+        return context
