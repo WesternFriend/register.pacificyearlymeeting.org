@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib import messages
+from django.contrib.auth import get_user_model
 from django.core.validators import MinValueValidator
 from django.db import models
 from django.shortcuts import redirect
@@ -39,6 +40,12 @@ class Registrant(models.Model):
         "event_days.EventDay", blank=True, default=True)
     overnight_accommodations = models.ForeignKey(
         "accommodations.Accommodation", on_delete=models.PROTECT, null=True, blank=True)
+    user = models.ForeignKey(
+        get_user_model(),
+        on_delete=models.PROTECT,
+        null=True,
+        blank=True,
+    )
 
     def is_full_week_attender(self):
         total_event_days = EventDay.objects.count()
@@ -100,6 +107,7 @@ class Registrant(models.Model):
         FieldPanel("days_attending",
                    widget=forms.CheckboxSelectMultiple),
         FieldPanel("overnight_accommodations"),
+        FieldPanel("user"),
     ]
 
     def full_name(self):
@@ -137,6 +145,10 @@ class RegistrationPage(Page):
 
             if registration_form.is_valid():
                 registration = registration_form.save()
+
+                # Associate user with registration
+                registration.user = request.user
+                registration.save()
 
                 messages.success(request, 'Registration added successfully!')
 
