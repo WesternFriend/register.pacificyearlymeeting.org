@@ -155,3 +155,13 @@ class RegistrationPage(Page):
                 return redirect("/")
         else:
             return super().serve(request)
+
+
+class MyRegistrantsPage(Page):
+    intro = RichTextField(null=True, blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel("intro"),
+    ]
+
+    max_count = 1
