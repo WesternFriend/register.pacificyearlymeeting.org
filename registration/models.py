@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.core.validators import MinValueValidator
 from django.db import models
+from django.forms.models import model_to_dict
 from django.shortcuts import redirect
 
 from wagtail.admin.edit_handlers import FieldPanel
@@ -189,8 +190,15 @@ class EditRegistrantPage(Page):
         registrant_id = request.GET["registrant_id"]
 
         if registrant_id:
+            # Avoid circular dependency
+            from registration.forms import RegistrationForm
+
             registrant = Registrant.objects.get(id=registrant_id)
 
-            context["registrant"] = registrant
+            # prepopulate model form with registrant (dictionary)
+            registrant_form = RegistrationForm(
+                initial=model_to_dict(registrant))
+
+            context["registrant_form"] = registrant_form
 
         return context
