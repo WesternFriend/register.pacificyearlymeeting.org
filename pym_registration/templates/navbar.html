@@ -12,6 +12,8 @@
         <ul class="navbar-nav ml-auto">
             <li class="ml-3">
                 {% if user.is_authenticated %}
+                <a class="btn btn-outline-primary" href="/register">Add registrant</a>
+                <a class="btn btn-outline-primary" href="/my-registrants">My registrants</a>
                 <a href="{% url 'logout' %}?next={{ request.path }}" class="btn btn-outline-success">
                     Logout
                 </a>
