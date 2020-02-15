@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 from django.core.validators import MinValueValidator
 from django.db import models
 from django.forms.models import model_to_dict
-from django.shortcuts import redirect
+from django.shortcuts import get_object_or_404, redirect
 
 from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.core.fields import RichTextField
@@ -193,7 +193,7 @@ class EditRegistrantPage(Page):
             # Avoid circular dependency
             from registration.forms import RegistrationForm
 
-            registrant = Registrant.objects.get(id=registrant_id)
+            registrant = get_object_or_404(Registrant, pk=registrant_id)
 
             # prepopulate model form with registrant (dictionary)
             registrant_form = RegistrationForm(
