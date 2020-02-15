@@ -186,5 +186,11 @@ class EditRegistrantPage(Page):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request)
+        registrant_id = request.GET["registrant_id"]
+
+        if registrant_id:
+            registrant = Registrant.objects.get(id=registrant_id)
+
+            context["registrant"] = registrant
 
         return context
