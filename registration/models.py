@@ -212,6 +212,8 @@ class EditRegistrantPage(Page):
 
             # Make sure request user is authorized to edit registrant
             if request.user.id is not registrant.user.id:
+                # TODO: make this error page a bit more user friendly
+                # e.g. by rendering it in the base.html
                 return HttpResponse('Unauthorized', status=401)
 
         return super().serve(request)
