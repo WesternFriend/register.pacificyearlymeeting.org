@@ -9,7 +9,10 @@
 
 <ul>
 {% for registrant in my_registrants %}
-    <li>{{ registrant }}
+    <li>
+        <a href="/edit-registrant?registrant_id={{ registrant.id }}" class="btn btn-sm btn-outline-success">Edit</a>
+        {{ registrant }}
+    </li>
 {% endfor %}
 </ul>
 
