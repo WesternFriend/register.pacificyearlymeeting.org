@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags %}
+
+{% block content %}
+<h1>
+    {{ page.title }}
+</h1>
+
+<ul>
+{% for registrant in my_registrants %}
+    <li>{{ registrant }}
+{% endfor %}
+</ul>
+
+{{ page.intro | richtext }}
+{% endblock content %}
