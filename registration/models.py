@@ -45,6 +45,7 @@ class Registrant(models.Model):
         on_delete=models.PROTECT,
         null=True,
         blank=True,
+        related_name="registrants",
     )
 
     def is_full_week_attender(self):
@@ -165,3 +166,10 @@ class MyRegistrantsPage(Page):
     ]
 
     max_count = 1
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request)
+
+        context["my_registrants"] = request.user.registrants.all()
+
+        return context
