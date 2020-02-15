@@ -173,3 +173,18 @@ class MyRegistrantsPage(Page):
         context["my_registrants"] = request.user.registrants.all()
 
         return context
+
+
+class EditRegistrantPage(Page):
+    intro = RichTextField(null=True, blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel("intro"),
+    ]
+
+    max_count = 1
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request)
+
+        return context
