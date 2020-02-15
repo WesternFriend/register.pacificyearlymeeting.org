@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 from django.core.validators import MinValueValidator
 from django.db import models
 from django.forms.models import model_to_dict
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect
 
 from wagtail.admin.edit_handlers import FieldPanel
@@ -202,3 +203,15 @@ class EditRegistrantPage(Page):
             context["registrant_form"] = registrant_form
 
         return context
+
+    def serve(self, request, *args, **kwargs):
+        registrant_id = request.GET["registrant_id"]
+
+        if registrant_id:
+            registrant = get_object_or_404(Registrant, pk=registrant_id)
+
+            # Make sure request user is authorized to edit registrant
+            if request.user.id is not registrant.user.id:
+                return HttpResponse('Unauthorized', status=401)
+
+        return super().serve(request)
