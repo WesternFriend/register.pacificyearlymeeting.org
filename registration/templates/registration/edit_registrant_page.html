@@ -9,5 +9,9 @@
 
 {{ page.intro | richtext }}
 
-{{ registrant }}
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ registrant_form }}
+    <button type="submit">Edit registrant</button>
+</form>
 {% endblock content %}
