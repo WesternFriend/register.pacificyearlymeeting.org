@@ -59,4 +59,4 @@ class AccommodationFee(models.Model):
         db_table = "accommodation_fee"
 
     def __str__(self):
-        return f"{ self.accommodation }"
+        return f"{ self.accommodation } (age { self.age_min } through  { self.age_max }): {self.daily_fee} daily / { self.full_week_fee } full week"
