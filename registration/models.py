@@ -41,7 +41,7 @@ class Registrant(models.Model):
     days_attending = models.ManyToManyField(
         "event_days.EventDay", blank=True, default=True)
     overnight_accommodations = models.ForeignKey(
-        "accommodations.Accommodation", on_delete=models.PROTECT, null=True, blank=True)
+        "fees.AccommodationFee", on_delete=models.PROTECT, null=True, blank=True)
     user = models.ForeignKey(
         get_user_model(),
         on_delete=models.PROTECT,
