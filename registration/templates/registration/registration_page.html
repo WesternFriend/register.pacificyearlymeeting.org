@@ -15,3 +15,41 @@
     <button type="submit">Register</button>
 </form>
 {% endblock content %}
+
+{% block extra_js %}
+<script>
+var overnightAccommodationsInputs = $("#id_overnight_accommodations input");
+
+function hideAccommodationOptions() {
+    overnightAccommodationsInputs.parent().parent().hide();
+};
+
+function accommodationIsEligible (index, element) {
+    var registrantAge = parseInt($("#id_age").val());
+
+    var ageMin = parseInt($(element).attr("data-age-min"));
+    var ageMax = parseInt($(element).attr("data-age-max"));
+
+    if (age) {
+        var oldEnough = registrantAge >= ageMin;
+        var youngEnough = registrantAge <= ageMax;
+
+        return oldEnough && youngEnough;
+    }
+};
+
+function showEligibleAccommodations(event) {
+    var eligibleAccommodations = $("#id_overnight_accommodations input").filter(accommodationIsEligible);
+
+    hideAccommodationOptions();
+
+    eligibleAccommodations.parent().parent().show();
+};
+
+$(document).ready(function () {
+    hideAccommodationOptions();
+});
+
+$("#id_age").on("input", showEligibleAccommodations);
+</script>
+{% endblock extra_js %}
