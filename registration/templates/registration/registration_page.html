@@ -30,7 +30,7 @@ function accommodationIsEligible (index, element) {
     var ageMin = parseInt($(element).attr("data-age-min"));
     var ageMax = parseInt($(element).attr("data-age-max"));
 
-    if (age) {
+    if (registrantAge) {
         var oldEnough = registrantAge >= ageMin;
         var youngEnough = registrantAge <= ageMax;
 
