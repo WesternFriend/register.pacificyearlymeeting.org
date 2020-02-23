@@ -16,7 +16,8 @@ class OvernightAccommodationsRadioSelect(RadioSelect):
         accommodation_fee_pk = option["index"]
 
         try:
-            accommodation_fee = AccommodationFee.objects.get(pk=1)
+            accommodation_fee = AccommodationFee.objects.get(
+                pk=accommodation_fee_pk)
         except:
             print("No accommodation fee found with given primary key.")
             accommodation_fee = None
