@@ -11,7 +11,116 @@
 
 <form action="" method="POST">
     {% csrf_token %}
-    {{ registration_form.as_p }}
+    {% if form.non_field_errors %}
+        <ul>
+        {% for error in form.non_field_errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    <!-- first name -->
+    {{ form.first_name.label_tag }}
+    {% if registration_form.first_name.label_tag.errors %}
+        <ul>
+            {% for error in form.first_name.label_tag.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {{ form.first_name }}
+
+    <!-- last name -->
+    {{ form.last_name.label_tag }}
+    {% if registration_form.last_name.label_tag.errors %}
+        <ul>
+            {% for error in form.last_name.label_tag.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {{ form.last_name }}
+
+    <br />
+
+    <!-- age -->
+    {{ form.age.label_tag }}
+    {% if registration_form.age.label_tag.errors %}
+        <ul>
+            {% for error in form.age.label_tag.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {{ form.age }}
+
+    <br />
+
+    <!-- email -->
+    {{ form.email.label_tag }}
+    {% if registration_form.email.label_tag.errors %}
+        <ul>
+            {% for error in form.email.label_tag.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {{ form.email }}
+
+    <br />
+
+    <!-- memorial meeting only -->
+    {{ form.attending_memorial_meeting_only.label_tag }}
+    {% if registration_form.attending_memorial_meeting_only.label_tag.errors %}
+        <ul>
+            {% for error in form.attending_memorial_meeting_only.label_tag.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {{ form.attending_memorial_meeting_only }}
+
+    <br />
+
+    <!-- ADA accessible accommodations -->
+    {{ form.needs_ada_accessible_accommodations.label_tag }}
+    {% if registration_form.needs_ada_accessible_accommodations.label_tag.errors %}
+        <ul>
+            {% for error in form.needs_ada_accessible_accommodations.label_tag.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {{ form.needs_ada_accessible_accommodations }}
+
+    <br />
+
+    <!-- days attending -->
+    {{ form.days_attending.label_tag }}
+    {% if registration_form.days_attending.label_tag.errors %}
+        <ul>
+            {% for error in form.days_attending.label_tag.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {{ form.days_attending }}
+
+    <br />
+
+    <!-- overnight accommodations -->
+    {{ form.overnight_accommodations.label_tag }}
+    {% if registration_form.overnight_accommodations.label_tag.errors %}
+        <ul>
+            {% for error in form.overnight_accommodations.label_tag.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {{ form.overnight_accommodations }}
+
+    <br />
+
     <button type="submit">Register</button>
 </form>
 {% endblock content %}
