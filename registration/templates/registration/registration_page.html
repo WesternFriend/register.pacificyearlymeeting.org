@@ -139,7 +139,7 @@
     </div>
 
     <!-- overnight accommodations -->
-    <div class="form-group" id="overnight-accommodations"> 
+    <div class="form-group" id="overnight-accommodations-container"> 
         {{ form.overnight_accommodations.label_tag }}
         {% if registration_form.overnight_accommodations.label_tag.errors %}
             <ul>
@@ -148,7 +148,7 @@
                 {% endfor %}
             </ul>
         {% endif %}
-        <ul class="list-unstyled">
+        <ul class="list-unstyled" id="id_overnight_accommodations">
             {% for option in form.overnight_accommodations %}
                 <li>
                     {{ option }}
