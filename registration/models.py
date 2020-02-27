@@ -135,7 +135,7 @@ class RegistrationPage(Page):
 
         context = super().get_context(request)
 
-        context["registration_form"] = RegistrationForm
+        context["form"] = RegistrationForm
 
         return context
 
