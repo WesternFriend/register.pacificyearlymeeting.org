@@ -29,6 +29,10 @@
         </ul>
     {% endif %}
     {{ form.first_name }}
+    {% if field.help_text %}
+        <br />{{ field.help_text }}
+    {% endif %}
+
 
     <!-- last name -->
     {{ form.last_name.label_tag }}
@@ -40,7 +44,9 @@
         </ul>
     {% endif %}
     {{ form.last_name }}
-
+    {% if field.help_text %}
+        <br />{{ field.help_text }}
+    {% endif %}
     <br />
 
     <!-- age -->
@@ -53,7 +59,9 @@
         </ul>
     {% endif %}
     {{ form.age }}
-
+    {% if field.help_text %}
+        <br />{{ field.help_text }}
+    {% endif %}
     <br />
 
     <!-- email -->
@@ -66,7 +74,9 @@
         </ul>
     {% endif %}
     {{ form.email }}
-
+    {% if field.help_text %}
+        <br />{{ field.help_text }}
+    {% endif %}
     <br />
 
     <!-- memorial meeting only -->
@@ -79,7 +89,9 @@
         </ul>
     {% endif %}
     {{ form.attending_memorial_meeting_only }}
-
+    {% if field.help_text %}
+        <br />{{ field.help_text }}
+    {% endif %}
     <br />
 
     <!-- ADA accessible accommodations -->
@@ -92,7 +104,9 @@
         </ul>
     {% endif %}
     {{ form.needs_ada_accessible_accommodations }}
-
+    {% if field.help_text %}
+        <br />{{ field.help_text }}
+    {% endif %}
     <br />
 
     <!-- days attending -->
@@ -105,7 +119,9 @@
         </ul>
     {% endif %}
     {{ form.days_attending }}
-
+    {% if field.help_text %}
+        <br />{{ field.help_text }}
+    {% endif %}
     <br />
 
     <!-- overnight accommodations -->
@@ -118,7 +134,9 @@
         </ul>
     {% endif %}
     {{ form.overnight_accommodations }}
-
+    {% if field.help_text %}
+        <br />{{ field.help_text }}
+    {% endif %}
     <br />
 
     <button type="submit">Register</button>
