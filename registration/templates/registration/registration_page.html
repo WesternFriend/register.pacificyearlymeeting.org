@@ -20,124 +20,133 @@
     {% endif %}
 
     <!-- first name -->
-    {{ form.first_name.label_tag }}
-    {% if registration_form.first_name.label_tag.errors %}
-        <ul>
-            {% for error in form.first_name.label_tag.errors %}
-            <li>{{ error }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-    {{ form.first_name }}
-    {% if field.help_text %}
-        <br />{{ field.help_text }}
-    {% endif %}
+    <div class="form-group"> 
+        {{ form.first_name.label_tag }}
+        {% if registration_form.first_name.label_tag.errors %}
+            <ul>
+                {% for error in form.first_name.label_tag.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {{ form.first_name }}
+        {% if field.help_text %}
+            <br />{{ field.help_text }}
+        {% endif %}
+    </div>
 
 
     <!-- last name -->
-    {{ form.last_name.label_tag }}
-    {% if registration_form.last_name.label_tag.errors %}
-        <ul>
-            {% for error in form.last_name.label_tag.errors %}
-            <li>{{ error }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-    {{ form.last_name }}
-    {% if field.help_text %}
-        <br />{{ field.help_text }}
-    {% endif %}
-    <br />
+    <div class="form-group"> 
+        {{ form.last_name.label_tag }}
+        {% if registration_form.last_name.label_tag.errors %}
+            <ul>
+                {% for error in form.last_name.label_tag.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {{ form.last_name }}
+        {% if field.help_text %}
+            <br />{{ field.help_text }}
+        {% endif %}
+    </div>
 
     <!-- age -->
-    {{ form.age.label_tag }}
-    {% if registration_form.age.label_tag.errors %}
-        <ul>
-            {% for error in form.age.label_tag.errors %}
-            <li>{{ error }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-    {{ form.age }}
-    {% if field.help_text %}
-        <br />{{ field.help_text }}
-    {% endif %}
-    <br />
+    <div class="form-group"> 
+        {{ form.age.label_tag }}
+        {% if registration_form.age.label_tag.errors %}
+            <ul>
+                {% for error in form.age.label_tag.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {{ form.age }}
+        {% if field.help_text %}
+            <br />{{ field.help_text }}
+        {% endif %}
+    </div>
 
     <!-- email -->
-    {{ form.email.label_tag }}
-    {% if registration_form.email.label_tag.errors %}
-        <ul>
-            {% for error in form.email.label_tag.errors %}
-            <li>{{ error }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-    {{ form.email }}
-    {% if field.help_text %}
-        <br />{{ field.help_text }}
-    {% endif %}
-    <br />
+    <div class="form-group"> 
+        {{ form.email.label_tag }}
+        {% if registration_form.email.label_tag.errors %}
+            <ul>
+                {% for error in form.email.label_tag.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {{ form.email }}
+        {% if field.help_text %}
+            <br />{{ field.help_text }}
+        {% endif %}
+    </div>
 
     <!-- memorial meeting only -->
-    {{ form.attending_memorial_meeting_only.label_tag }}
-    {% if registration_form.attending_memorial_meeting_only.label_tag.errors %}
-        <ul>
-            {% for error in form.attending_memorial_meeting_only.label_tag.errors %}
-            <li>{{ error }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-    {{ form.attending_memorial_meeting_only }}
-    {% if field.help_text %}
-        <br />{{ field.help_text }}
-    {% endif %}
-    <br />
+    <div class="form-group"> 
+        {{ form.attending_memorial_meeting_only.label_tag }}
+        {% if registration_form.attending_memorial_meeting_only.label_tag.errors %}
+            <ul>
+                {% for error in form.attending_memorial_meeting_only.label_tag.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {{ form.attending_memorial_meeting_only }}
+        {% if field.help_text %}
+            <br />{{ field.help_text }}
+        {% endif %}
+    </div>
 
     <!-- ADA accessible accommodations -->
-    {{ form.needs_ada_accessible_accommodations.label_tag }}
-    {% if registration_form.needs_ada_accessible_accommodations.label_tag.errors %}
-        <ul>
-            {% for error in form.needs_ada_accessible_accommodations.label_tag.errors %}
-            <li>{{ error }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-    {{ form.needs_ada_accessible_accommodations }}
-    {% if field.help_text %}
-        <br />{{ field.help_text }}
-    {% endif %}
-    <br />
+    <div class="form-group"> 
+        {{ form.needs_ada_accessible_accommodations.label_tag }}
+        {% if registration_form.needs_ada_accessible_accommodations.label_tag.errors %}
+            <ul>
+                {% for error in form.needs_ada_accessible_accommodations.label_tag.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {{ form.needs_ada_accessible_accommodations }}
+        {% if field.help_text %}
+            <br />{{ field.help_text }}
+        {% endif %}
+    </div>
 
     <!-- days attending -->
-    {{ form.days_attending.label_tag }}
-    {% if registration_form.days_attending.label_tag.errors %}
-        <ul>
-            {% for error in form.days_attending.label_tag.errors %}
-            <li>{{ error }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-    {{ form.days_attending }}
-    {% if field.help_text %}
-        <br />{{ field.help_text }}
-    {% endif %}
-    <br />
+    <div class="form-group"> 
+        {{ form.days_attending.label_tag }}
+        {% if registration_form.days_attending.label_tag.errors %}
+            <ul>
+                {% for error in form.days_attending.label_tag.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {{ form.days_attending }}
+        {% if field.help_text %}
+            <br />{{ field.help_text }}
+        {% endif %}
+    </div>
 
     <!-- overnight accommodations -->
-    {{ form.overnight_accommodations.label_tag }}
-    {% if registration_form.overnight_accommodations.label_tag.errors %}
-        <ul>
-            {% for error in form.overnight_accommodations.label_tag.errors %}
-            <li>{{ error }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-    {{ form.overnight_accommodations }}
-    {% if field.help_text %}
-        <br />{{ field.help_text }}
-    {% endif %}
-    <br />
+    <div class="form-group"> 
+        {{ form.overnight_accommodations.label_tag }}
+        {% if registration_form.overnight_accommodations.label_tag.errors %}
+            <ul>
+                {% for error in form.overnight_accommodations.label_tag.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {{ form.overnight_accommodations }}
+        {% if field.help_text %}
+            <br />{{ field.help_text }}
+        {% endif %}
+    </div>
 
     <button type="submit">Register</button>
 </form>
