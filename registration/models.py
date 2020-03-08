@@ -19,6 +19,20 @@ class Registrant(models.Model):
     """
     Represents a person who will attend the annual session.
     """
+    OVERNIGHT_ATTENDER = "overnight_attender"
+    DAY_ATTENDER = "day_attender"
+    MEMORIALS_ONLY = "memorials_only"
+    REGISTRATION_TYPE_CHOICES = [
+        (OVERNIGHT_ATTENDER, "Overnight attender"),
+        (DAY_ATTENDER, "Day attender"),
+        (MEMORIALS_ONLY, "Meeting for Memorials only"),
+    ]
+
+    registration_type = models.CharField(
+        max_length=255,
+        choices=REGISTRATION_TYPE_CHOICES,
+        default=OVERNIGHT_ATTENDER,
+    )
     first_name = models.CharField(
         max_length=255
     )
