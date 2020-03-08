@@ -84,6 +84,22 @@
         {% endif %}
     </div>
 
+    <!-- registration type -->
+    <div class="form-group"> 
+        {{ form.registration_type.label_tag }}
+        {% if form.registration_type.errors %}
+            <ul>
+                {% for error in form.registration_type.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {{ form.registration_type }}
+        {% if form.registration_type.help_text %}
+            <br />{{ form.registration_type.help_text }}
+        {% endif %}
+    </div>
+
     <!-- memorial meeting only -->
     <div class="form-group"> 
         {{ form.attending_memorial_meeting_only.label_tag }}
