@@ -100,22 +100,6 @@
         {% endif %}
     </div>
 
-    <!-- memorial meeting only -->
-    <div class="form-group"> 
-        {{ form.attending_memorial_meeting_only.label_tag }}
-        {% if form.attending_memorial_meeting_only.errors %}
-            <ul>
-                {% for error in form.attending_memorial_meeting_only.errors %}
-                <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-        {{ form.attending_memorial_meeting_only }}
-        {% if field.help_text %}
-            <br />{{ field.help_text }}
-        {% endif %}
-    </div>
-
     <!-- ADA accessible accommodations -->
     <div class="form-group"> 
         {{ form.needs_ada_accessible_accommodations.label_tag }}
