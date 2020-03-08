@@ -117,7 +117,7 @@
     </div>
 
     <!-- days attending -->
-    <div class="form-group"> 
+    <div class="form-group" id="days-attending-container"> 
         {{ form.days_attending.label_tag }}
         {% if form.days_attending.errors %}
             <ul>
@@ -192,12 +192,49 @@ function showEligibleAccommodations(event) {
     hideAccommodationOptions();
 
     eligibleAccommodations.parent().parent().show();
-};
+}
+
+function hideDaysAttending() {
+    $("#days-attending-container").hide();
+}
+
+function showDaysAttending() {
+    $("#days-attending-container").show();
+}
+
+function hideOvernightAccommodations() {
+    $("#overnight-accommodations-container").hide();
+}
+
+function showOvernightAccommodations() {
+    $("#overnight-accommodations-container").show();
+}
+
+function showRelevantFormSections() {
+    hideDaysAttending();
+    hideOvernightAccommodations();
+
+    var registrationType = $("#id_registration_type").val();
+
+    if (registrationType === "overnight_attender") {
+        showDaysAttending();
+        showOvernightAccommodations();
+    } else if (registrationType === "day_attender") {
+        showDaysAttending();
+    }
+
+    console.log(registrationType);
+}
 
 $(document).ready(function () {
-    hideAccommodationOptions();
+    hideOvernightAccommodations();
+    hideDaysAttending();
+    showRelevantFormSections();
 });
 
 $("#id_age").on("input", showEligibleAccommodations);
+
+$("#id_registration_type").on("input", showRelevantFormSections);
+
 </script>
 {% endblock extra_js %}
