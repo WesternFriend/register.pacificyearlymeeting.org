@@ -30,8 +30,8 @@
             </ul>
         {% endif %}
         {{ form.first_name }}
-        {% if field.help_text %}
-            <br />{{ field.help_text }}
+        {% if form.first_name.help_text %}
+            <br />{{ form.first_name.help_text }}
         {% endif %}
     </div>
 
@@ -47,8 +47,8 @@
             </ul>
         {% endif %}
         {{ form.last_name }}
-        {% if field.help_text %}
-            <br />{{ field.help_text }}
+        {% if form.last_name.help_text %}
+            <br />{{ form.last_name.help_text }}
         {% endif %}
     </div>
 
@@ -63,8 +63,8 @@
             </ul>
         {% endif %}
         {{ form.age }}
-        {% if field.help_text %}
-            <br />{{ field.help_text }}
+        {% if form.age.help_text %}
+            <br />{{ form.age.help_text }}
         {% endif %}
     </div>
 
@@ -79,8 +79,8 @@
             </ul>
         {% endif %}
         {{ form.email }}
-        {% if field.help_text %}
-            <br />{{ field.help_text }}
+        {% if form.email.help_text %}
+            <br />{{ form.email.help_text }}
         {% endif %}
     </div>
 
@@ -111,8 +111,8 @@
             </ul>
         {% endif %}
         {{ form.needs_ada_accessible_accommodations }}
-        {% if field.help_text %}
-            <br />{{ field.help_text }}
+        {% if form.needs_ada_accessible_accommodations.help_text %}
+            <br />{{ form.needs_ada_accessible_accommodations.help_text }}
         {% endif %}
     </div>
 
@@ -133,8 +133,8 @@
                 </li>
             {% endfor %}
         </ul>
-        {% if field.help_text %}
-            <br />{{ field.help_text }}
+        {% if form.days_attending.help_text %}
+            <br />{{ form.days_attending.help_text }}
         {% endif %}
     </div>
 
@@ -155,8 +155,8 @@
                 </li>
             {% endfor %}
         </ul>
-        {% if field.help_text %}
-            <br />{{ field.help_text }}
+        {% if form.overnight_accommodations.help_text %}
+            <br />{{ form.overnight_accommodations.help_text }}
         {% endif %}
     </div>
 
