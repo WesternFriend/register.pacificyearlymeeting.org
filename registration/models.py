@@ -32,12 +32,15 @@ class Registrant(models.Model):
         max_length=255,
         choices=REGISTRATION_TYPE_CHOICES,
         default=OVERNIGHT_ATTENDER,
+        help_text="Select 'Overnight attender' if needing overnight accommodations, 'day attender' if commuting to the event daily, or 'Memorials only' if registrant will only attend the Meeting for Memorials.",
     )
     first_name = models.CharField(
-        max_length=255
+        max_length=255,
+        help_text="Registrant first name",
     )
     last_name = models.CharField(
-        max_length=255
+        max_length=255,
+        help_text="Registrant last name"
     )
     age = models.IntegerField(
         help_text="Age at time of the event.",
@@ -50,11 +53,13 @@ class Registrant(models.Model):
         null=True,
         blank=True,
     )
-    needs_ada_accessible_accommodations = models.BooleanField()
+    needs_ada_accessible_accommodations = models.BooleanField(
+        help_text="This lets us know youthis registrant needs accessible accomodations, such as a wheelchair ramp."
+    )
     days_attending = models.ManyToManyField(
-        "event_days.EventDay", blank=True, default=True)
+        "event_days.EventDay", blank=True, default=True, help_text="On what day(s) will this registrant be attending the event?")
     overnight_accommodations = models.ForeignKey(
-        "fees.AccommodationFee", on_delete=models.PROTECT, null=True, blank=True)
+        "fees.AccommodationFee", on_delete=models.PROTECT, null=True, blank=True, help_text="What type of overnight accommodations does this registrant need?")
     user = models.ForeignKey(
         get_user_model(),
         on_delete=models.PROTECT,
