@@ -50,7 +50,6 @@ class Registrant(models.Model):
         null=True,
         blank=True,
     )
-    attending_memorial_meeting_only = models.BooleanField(default=False)
     needs_ada_accessible_accommodations = models.BooleanField()
     days_attending = models.ManyToManyField(
         "event_days.EventDay", blank=True, default=True)
