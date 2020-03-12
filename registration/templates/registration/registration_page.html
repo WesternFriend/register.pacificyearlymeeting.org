@@ -85,23 +85,44 @@
     </div>
 
     <!-- registration type -->
-    <div class="form-group"> 
-        {{ form.registration_type.label_tag }}
-        {% if form.registration_type.errors %}
-            <ul>
-                {% for error in form.registration_type.errors %}
-                <li>{{ error }}</li>
+    <div class="form-group">
+        <div class="card">
+            <div class="card-header">
+                <h2>Registration type</h2>
+            </div>
+
+            <label class="mt-3 ml-3">Select one</label>
+
+            <ul id="id_registration_type" class="list-group list-group-flush">
+                {% for key, value in form.registration_type.field.choices %}
+                    <li class="list-group-item">
+                        <label class="checkbox">
+                            <input type="radio" name="registration_type" value="{{ key }}" />
+                            <span class="primary"></span>
+                        </label>
+
+                        {{ value }}
+                    </li>
                 {% endfor %}
             </ul>
-        {% endif %}
-        {{ form.registration_type }}
-        {% if form.registration_type.help_text %}
-            <br />{{ form.registration_type.help_text }}
-        {% endif %}
+
+            {% if form.registration_type.help_text %}
+                <p class="ml-3">
+                    {{ form.registration_type.help_text }}
+                </p>
+            {% endif %}
+
+            {% if form.registration_type.errors %}
+                <ul>
+                    {% for error in form.registration_type.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
     </div>
 
     <!-- ADA accessible accommodations -->
-    
     <div class="form-group">
         <div class="card">
             <div class="card-header">
@@ -198,6 +219,7 @@
 {% block extra_js %}
 <script>
 var overnightAccommodationsInputs = $("#id_overnight_accommodations input");
+var registrationTypeInputs = $("input[name='registration_type']");
 
 function hideAccommodationOptions() {
     overnightAccommodationsInputs.parent().parent().hide();
@@ -245,7 +267,8 @@ function showRelevantFormSections() {
     hideDaysAttending();
     hideOvernightAccommodations();
 
-    var registrationType = $("#id_registration_type").val();
+    // Get the selected registration type
+    var registrationType = registrationTypeInputs.filter(":checked").val();
 
     if (registrationType === "overnight_attender") {
         showDaysAttending();
@@ -263,7 +286,7 @@ $(document).ready(function () {
 
 $("#id_age").on("input", showEligibleAccommodations);
 
-$("#id_registration_type").on("input", showRelevantFormSections);
+registrationTypeInputs.on("change", showRelevantFormSections);
 
 </script>
 {% endblock extra_js %}
