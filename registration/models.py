@@ -54,7 +54,7 @@ class Registrant(models.Model):
         blank=True,
     )
     needs_ada_accessible_accommodations = models.BooleanField(
-        help_text="This lets us know youthis registrant needs accessible accomodations, such as a wheelchair ramp."
+        help_text="Will this registrant need accessible accomodations, such as a wheelchair ramp?"
     )
     days_attending = models.ManyToManyField(
         "event_days.EventDay", blank=True, default=True, help_text="On what day(s) will this registrant be attending the event?")
