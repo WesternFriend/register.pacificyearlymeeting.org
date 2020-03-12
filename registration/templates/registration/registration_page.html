@@ -19,70 +19,86 @@
         </ul>
     {% endif %}
 
-    <!-- first name -->
-    <div class="form-group"> 
-        {{ form.first_name.label_tag }}
-        {% if form.first_name.errors %}
-            <ul>
-                {% for error in form.first_name.errors %}
-                <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-        {{ form.first_name }}
-        {% if form.first_name.help_text %}
-            <br />{{ form.first_name.help_text }}
-        {% endif %}
-    </div>
+    <div class="card">
+        <div class="card-header">
+            <h2>Registrant</h2>
+        </div>
+
+        <div class="card-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- first name -->
+                    <div class="form-group col-sm-6"> 
+                        {{ form.first_name.label_tag }}
+                        {% if form.first_name.errors %}
+                            <ul>
+                                {% for error in form.first_name.errors %}
+                                <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                        {{ form.first_name }}
+                        {% if form.first_name.help_text %}
+                            <br />{{ form.first_name.help_text }}
+                        {% endif %}
+                    </div>
 
 
-    <!-- last name -->
-    <div class="form-group"> 
-        {{ form.last_name.label_tag }}
-        {% if form.last_name.errors %}
-            <ul>
-                {% for error in form.last_name.errors %}
-                <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-        {{ form.last_name }}
-        {% if form.last_name.help_text %}
-            <br />{{ form.last_name.help_text }}
-        {% endif %}
+                    <!-- last name -->
+                    <div class="form-group col-sm-6"> 
+                        {{ form.last_name.label_tag }}
+                        {% if form.last_name.errors %}
+                            <ul>
+                                {% for error in form.last_name.errors %}
+                                <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                        {{ form.last_name }}
+                        {% if form.last_name.help_text %}
+                            <br />{{ form.last_name.help_text }}
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- age -->
+                    <div class="form-group col-sm-6"> 
+                        {{ form.age.label_tag }}
+                        {% if form.age.errors %}
+                            <ul>
+                                {% for error in form.age.errors %}
+                                <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                        {{ form.age }}
+                        {% if form.age.help_text %}
+                            <br />{{ form.age.help_text }}
+                        {% endif %}
+                    </div>
+
+                    <!-- email -->
+                <div class="form-group col-sm-6"> 
+                    {{ form.email.label_tag }}
+                    {% if form.email.errors %}
+                        <ul>
+                            {% for error in form.email.errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    {{ form.email }}
+                    {% if form.email.help_text %}
+                        <br />{{ form.email.help_text }}
+                    {% endif %}
+                </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- age -->
-    <div class="form-group"> 
-        {{ form.age.label_tag }}
-        {% if form.age.errors %}
-            <ul>
-                {% for error in form.age.errors %}
-                <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-        {{ form.age }}
-        {% if form.age.help_text %}
-            <br />{{ form.age.help_text }}
-        {% endif %}
-    </div>
-
-    <!-- email -->
-    <div class="form-group"> 
-        {{ form.email.label_tag }}
-        {% if form.email.errors %}
-            <ul>
-                {% for error in form.email.errors %}
-                <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-        {{ form.email }}
-        {% if form.email.help_text %}
-            <br />{{ form.email.help_text }}
-        {% endif %}
-    </div>
+    <br />
 
     <!-- ADA accessible accommodations -->
     <div class="card">
