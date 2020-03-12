@@ -101,26 +101,44 @@
     </div>
 
     <!-- ADA accessible accommodations -->
-    <div class="form-group"> 
-        {{ form.needs_ada_accessible_accommodations.label_tag }}
-        {% if form.needs_ada_accessible_accommodations.errors %}
-            <ul>
-                {% for error in form.needs_ada_accessible_accommodations.errors %}
-                <li>{{ error }}</li>
-                {% endfor %}
+    
+    <div class="form-group">
+        <div class="card">
+            <div class="card-header">
+                <h2>Accessibility</h2>
+            </div>
+
+            {% if form.needs_ada_accessible_accommodations.help_text %}
+                <p class="mt-3 ml-3">
+                    {{ form.needs_ada_accessible_accommodations.help_text }}
+                </p>
+            {% endif %}
+
+            <ul id="id_days_attending" class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <label class="checkbox">
+                        {{ form.needs_ada_accessible_accommodations }}
+                        <span class="primary"></span>
+                    </label>
+
+                    {{ form.needs_ada_accessible_accommodations.label }}
+                </li>
             </ul>
-        {% endif %}
-        {{ form.needs_ada_accessible_accommodations }}
-        {% if form.needs_ada_accessible_accommodations.help_text %}
-            <br />{{ form.needs_ada_accessible_accommodations.help_text }}
-        {% endif %}
+
+            {% if form.needs_ada_accessible_accommodations.errors %}
+                <ul class="ml-3">
+                    {% for error in form.needs_ada_accessible_accommodations.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
     </div>
 
     <!-- days attending -->
     <div class="form-group" id="days-attending-container">
         <div class="card" style="margin:50px 0">
             <div class="card-header">
-                {{ form.days_attending.label_tag }}
+                <h2>Days attending</h2>
             </div>
 
             {% if form.days_attending.errors %}
