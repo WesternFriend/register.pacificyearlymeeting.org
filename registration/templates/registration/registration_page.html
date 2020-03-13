@@ -59,7 +59,7 @@
                             <br />{{ form.last_name.help_text }}
                         {% endif %}
                     </div>
-                </div>
+                </div> <!-- /row -->
 
                 <div class="row">
                     <!-- age -->
@@ -76,26 +76,29 @@
                         {% if form.age.help_text %}
                             <br />{{ form.age.help_text }}
                         {% endif %}
-                    </div>
+                    </div> <!-- /form-group-->
 
                     <!-- email -->
-                <div class="form-group col-sm-6"> 
-                    {{ form.email.label_tag }}
-                    {% if form.email.errors %}
-                        <ul>
-                            {% for error in form.email.errors %}
-                            <li>{{ error }}</li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
-                    {{ form.email }}
-                    {% if form.email.help_text %}
-                        <br />{{ form.email.help_text }}
-                    {% endif %}
-                </div>
-                </div>
-            </div>
-        </div>
+                    <div class="form-group col-sm-6"> 
+                        {{ form.email.label_tag }}
+
+                        {% if form.email.errors %}
+                            <ul>
+                                {% for error in form.email.errors %}
+                                <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+
+                        {{ form.email }}
+
+                        {% if form.email.help_text %}
+                            <br />{{ form.email.help_text }}
+                        {% endif %}
+                    </div> <!-- /form-group -->
+                </div><!-- /row-->
+            </div><!-- /container-fluid -->
+        </div> <!-- /card-body -->
     </div>
 
     <br />
@@ -130,12 +133,11 @@
                 {% endfor %}
             </ul>
         {% endif %}
-    </div>
+    </div><!-- /card -->
 
     <br />
 
     <!-- registration type -->
-
     <div class="card">
         <div class="card-header">
             <h2>Registration type</h2>
@@ -169,7 +171,7 @@
                 {% endfor %}
             </ul>
         {% endif %}
-    </div>
+    </div><!-- /card -->
 
     <br />
 
@@ -178,14 +180,6 @@
         <div class="card-header">
             <h2>Days attending</h2>
         </div>
-
-        {% if form.days_attending.errors %}
-            <ul>
-                {% for error in form.days_attending.errors %}
-                <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
 
         {% if form.days_attending.help_text %}
             <p class="mt-3 ml-3">{{ form.days_attending.help_text }}</p>
@@ -203,8 +197,15 @@
                 </li>
             {% endfor %}
         </ul>
-        
-    </div>
+
+        {% if form.days_attending.errors %}
+            <ul>
+                {% for error in form.days_attending.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div><!-- /card -->
 
     <br />
 
@@ -215,9 +216,9 @@
         </div>
 
         {% if form.overnight_accommodations.help_text %}
-            <p class="mt-3 ml-3">
+            <label class="mt-3 ml-3">
                 {{ form.overnight_accommodations.help_text }}
-            </p>
+            </label>
         {% endif %}
 
         <ul id="id_overnight_accommodations" class="list-group list-group-flush">
@@ -246,9 +247,23 @@
                 {% endfor %}
             </ul>
         {% endif %}
-    </div>
+    </div><!-- /card -->
 
-    <button type="submit">Register</button>
+    <div class="card">
+        <div class="card-header">
+            <h2>Save registrant</h2>
+        </div>
+
+        <div class="card-body">
+
+        <p>When you have entered the above details, be sure to save this registrant.</p>
+
+        <button type="submit" class="btn btn-lg btn-outline-success">
+            <i class="fas fa-check"></i>
+            Save registrant
+            <i class="fas fa-user"></i>
+        </button>
+    </div>
 </form>
 {% endblock content %}
 
