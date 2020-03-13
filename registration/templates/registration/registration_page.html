@@ -19,7 +19,7 @@
         </ul>
     {% endif %}
 
-    <div class="card">
+    <div class="card mb-3">
         <div class="card-header">
             <h2>Registrant</h2>
         </div>
@@ -101,10 +101,8 @@
         </div> <!-- /card-body -->
     </div>
 
-    <br />
-
     <!-- ADA accessible accommodations -->
-    <div class="card">
+    <div class="card mb-3">
         <div class="card-header">
             <h2>Accessibility</h2>
         </div>
@@ -135,10 +133,8 @@
         {% endif %}
     </div><!-- /card -->
 
-    <br />
-
     <!-- registration type -->
-    <div class="card {% if form.registration_type.errors %}border border-danger{% endif %}">
+    <div class="card mb-3 {% if form.registration_type.errors %}border border-danger{% endif %}">
         <div class="card-header">
             <h2>Registration type</h2>
         </div>
@@ -173,10 +169,8 @@
         {% endif %}
     </div><!-- /card -->
 
-    <br />
-
     <!-- days attending -->
-    <div class="card" id="days-attending-container">
+    <div class="card mb-3" id="days-attending-container">
         <div class="card-header">
             <h2>Days attending</h2>
         </div>
@@ -207,10 +201,8 @@
         {% endif %}
     </div><!-- /card -->
 
-    <br />
-
     <!-- overnight accommodations -->
-    <div class="card" id="overnight-accommodations-container">
+    <div class="card mb-3" id="overnight-accommodations-container">
         <div class="card-header">
             <h2>Overnight accommodations</h2>
         </div>
@@ -259,7 +251,7 @@
         <p>Press the button below to save this registrant.</p>
 
         <button type="submit" class="btn btn-lg btn-outline-success align-center">
-            <i class="fas fa-check"></i>
+            <i class="material-icons">playlist_add_check</i>
             Save registrant
             <i class="fas fa-user"></i>
         </button>
