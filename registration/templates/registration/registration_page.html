@@ -206,25 +206,45 @@
         
     </div>
 
+    <br />
+
     <!-- overnight accommodations -->
-    <div class="form-group" id="overnight-accommodations-container"> 
-        {{ form.overnight_accommodations.label_tag }}
+    <div class="card" id="overnight-accommodations-container">
+        <div class="card-header">
+            <h2>Overnight accommodations</h2>
+        </div>
+
+        {% if form.overnight_accommodations.help_text %}
+            <p class="mt-3 ml-3">
+                {{ form.overnight_accommodations.help_text }}
+            </p>
+        {% endif %}
+
+        <ul id="id_overnight_accommodations" class="list-group list-group-flush">
+            {% for option in form.overnight_accommodations.field.queryset %}
+                <li 
+                    class="list-group-item"
+                    data-age-min="{{ option.age_min }}"
+                    data-age-max="{{ option.age_max }}"
+                    data-daily-fee="{{ option.daily_fee }}"
+                    data-weekly-fee="{{ option.weekly_fee }}"
+                >
+                    <label class="checkbox">
+                        <input type="radio" name="overnight_accommodations" value="{{ option.pk }}" />
+                        <span class="primary"></span>
+                    </label>
+
+                    {{ option }}
+                </li>
+            {% endfor %}
+        </ul>
+
         {% if form.overnight_accommodations.errors %}
             <ul>
                 {% for error in form.overnight_accommodations.errors %}
                 <li>{{ error }}</li>
                 {% endfor %}
             </ul>
-        {% endif %}
-        <ul class="list-unstyled" id="id_overnight_accommodations">
-            {% for option in form.overnight_accommodations %}
-                <li>
-                    {{ option }}
-                </li>
-            {% endfor %}
-        </ul>
-        {% if form.overnight_accommodations.help_text %}
-            <br />{{ form.overnight_accommodations.help_text }}
         {% endif %}
     </div>
 
@@ -234,11 +254,11 @@
 
 {% block extra_js %}
 <script>
-var overnightAccommodationsInputs = $("#id_overnight_accommodations input");
+var overnightAccommodationsOptions = $("#id_overnight_accommodations li");
 var registrationTypeInputs = $("input[name='registration_type']");
 
 function hideAccommodationOptions() {
-    overnightAccommodationsInputs.parent().parent().hide();
+    overnightAccommodationsOptions.hide();
 };
 
 function accommodationIsEligible (index, element) {
@@ -256,11 +276,11 @@ function accommodationIsEligible (index, element) {
 };
 
 function showEligibleAccommodations(event) {
-    var eligibleAccommodations = $("#id_overnight_accommodations input").filter(accommodationIsEligible);
+    var eligibleAccommodations = $("#id_overnight_accommodations li").filter(accommodationIsEligible);
 
     hideAccommodationOptions();
 
-    eligibleAccommodations.parent().parent().show();
+    eligibleAccommodations.show();
 }
 
 function hideDaysAttending() {
