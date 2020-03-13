@@ -283,11 +283,12 @@ function accommodationIsEligible (index, element) {
 };
 
 function showEligibleAccommodations(event) {
-    var eligibleAccommodations = $("#id_overnight_accommodations li").filter(accommodationIsEligible);
-
     hideAccommodationOptions();
+
     // TODO: de-select any previously selected value
     // to prevent the selection from being hidden and submitted
+
+    var eligibleAccommodations = overnightAccommodationsOptions.filter(accommodationIsEligible);
 
     eligibleAccommodations.show();
 }
