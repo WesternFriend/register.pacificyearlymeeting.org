@@ -147,22 +147,26 @@ class RegistrationPage(Page):
 
     max_count = 1
 
-    def get_context(self, request, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         # Avoid circular dependency
         from registration.forms import RegistrationForm
 
+        super().__init__(*args, **kwargs)
+
+        self.registration_form = RegistrationForm
+
+    def get_context(self, request, *args, **kwargs):
+
         context = super().get_context(request)
 
-        context["form"] = RegistrationForm
+        context["form"] = self.registration_form
 
         return context
 
     def serve(self, request, *args, **kwargs):
-        # Avoid circular dependency
-        from registration.forms import RegistrationForm
-
+        # Check if form was submitted
         if request.method == "POST":
-            registration_form = RegistrationForm(request.POST)
+            registration_form = self.registration_form(request.POST)
 
             if registration_form.is_valid():
                 registration = registration_form.save()
@@ -174,8 +178,10 @@ class RegistrationPage(Page):
                 messages.success(request, 'Registration added successfully!')
 
                 return redirect("/")
-        else:
-            return super().serve(request)
+            else:
+                self.registration_form = registration_form
+
+        return super().serve(request)
 
 
 class MyRegistrantsPage(Page):
