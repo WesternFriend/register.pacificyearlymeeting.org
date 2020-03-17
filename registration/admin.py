@@ -9,6 +9,8 @@ from registration.models import Registrant
 class RegistrantModelAdmin(ModelAdmin):
     """Registrant model admin."""
 
+    needs_ada_accessible_accommodations_col_header_text = "ADA accommodations"
+
     model = Registrant
     menu_label = "Registrants"
     menu_icon = "fa-address-book"
@@ -18,16 +20,15 @@ class RegistrantModelAdmin(ModelAdmin):
     list_display = (
         "full_name",
         "age",
-        "email",
         "needs_ada_accessible_accommodations",
         "is_full_week_attender",
         "total_partial_day_discount",
         "registration_fee",
     )
     list_filter = (
+        "registration_type",
         "overnight_accommodations",
         "needs_ada_accessible_accommodations",
-        "attending_memorial_meeting_only",
         "days_attending",
     )
     search_fields = (
