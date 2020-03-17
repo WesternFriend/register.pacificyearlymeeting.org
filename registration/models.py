@@ -80,7 +80,9 @@ class Registrant(models.Model):
 
     def total_partial_day_discount(self):
         partial_day_discounts = [
-            day.partial_day_discount for day in self.days_attending.all()]
+            day.partial_day_discount for day in self.days_attending.all()
+            if day.partial_day_discount is not None
+        ]
 
         return sum(partial_day_discounts)
 
@@ -89,26 +91,19 @@ class Registrant(models.Model):
 
         number_of_days_attending = len(days_attending)
 
-        if self.attending_memorial_meeting_only:
+        if self.registration_type == Registrant.MEMORIALS_ONLY:
             # Memorial-only attendees are free
             return 0
         if self.overnight_accommodations:
-            # Use Accommodation Fee structure
-            relevant_accommodation_fee = AccommodationFee.objects.get(
-                age_min__lte=self.age,
-                age_max__gte=self.age,
-                accommodation=self.overnight_accommodations,
-            )
-
             # full week attenders have specific fee
             if self.is_full_week_attender():
-                return relevant_accommodation_fee.full_week_fee
+                return self.overnight_accommodations.full_week_fee
 
             # daily attenders have day rate multiplied by days attending
             # they also qualify for daily discount based on partial days
             total_partial_day_discount = self.total_partial_day_discount()
 
-            return relevant_accommodation_fee.daily_fee * number_of_days_attending - total_partial_day_discount
+            return self.overnight_accommodations.daily_fee * number_of_days_attending - total_partial_day_discount
 
         # Default to day attender fee
         relevant_day_attender_fee = DayAttenderFee.objects.get(
@@ -123,7 +118,6 @@ class Registrant(models.Model):
         FieldPanel("last_name"),
         FieldPanel("age"),
         FieldPanel("email"),
-        FieldPanel("attending_memorial_meeting_only"),
         FieldPanel("needs_ada_accessible_accommodations"),
         FieldPanel("days_attending",
                    widget=forms.CheckboxSelectMultiple),
