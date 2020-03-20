@@ -116,6 +116,7 @@ class Registrant(models.Model):
     panels = [
         FieldPanel("first_name"),
         FieldPanel("last_name"),
+        FieldPanel("registration_type"),
         FieldPanel("age"),
         FieldPanel("email"),
         FieldPanel("needs_ada_accessible_accommodations"),
@@ -215,10 +216,11 @@ class EditRegistrantPage(Page):
             registrant = get_object_or_404(Registrant, pk=registrant_id)
 
             # prepopulate model form with registrant (dictionary)
-            registrant_form = RegistrationForm(
-                initial=model_to_dict(registrant))
+            form = RegistrationForm(
+                instance=registrant,
+            )
 
-            context["registrant_form"] = registrant_form
+            context["form"] = form
 
         return context
 

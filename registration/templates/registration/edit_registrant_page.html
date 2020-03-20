@@ -9,9 +9,111 @@
 
 {{ page.intro | richtext }}
 
-<form action="" method="POST">
-    {% csrf_token %}
-    {{ registrant_form.as_p }}
-    <button type="submit">Edit registrant</button>
-</form>
+{% include "registration/registrant_form.html" with form=form %}
 {% endblock content %}
+
+{% block extra_js %}
+<script>
+var overnightAccommodationsOptions = $("#id_overnight_accommodations li");
+var registrationTypeInputs = $("input[name='registration_type']");
+
+function hideAccommodationOptions() {
+    overnightAccommodationsOptions.hide();
+};
+
+function accommodationIsEligible (index, element) {
+    var registrantAge = parseInt($("#id_age").val());
+
+    var ageMin = parseInt($(element).attr("data-age-min"));
+    var ageMax = parseInt($(element).attr("data-age-max"));
+
+    if (registrantAge) {
+        var oldEnough = registrantAge >= ageMin;
+        var youngEnough = registrantAge <= ageMax;
+
+        return oldEnough && youngEnough;
+    }
+};
+
+function showEligibleAccommodations(event) {
+    hideAccommodationOptions();
+
+    // TODO: de-select any previously selected value
+    // to prevent the selection from being hidden and submitted
+
+    var eligibleAccommodations = overnightAccommodationsOptions.filter(accommodationIsEligible);
+
+    eligibleAccommodations.show();
+}
+
+function hideDaysAttending() {
+    $("#days-attending-container").hide();
+}
+
+function showDaysAttending() {
+    $("#days-attending-container").show();
+}
+
+function hideOvernightAccommodations() {
+    $("#overnight-accommodations-container").hide();
+}
+
+function showOvernightAccommodations() {
+    $("#overnight-accommodations-container").show();
+}
+
+function showRelevantFormSections() {
+    hideDaysAttending();
+    hideOvernightAccommodations();
+
+    // Get the selected registration type
+    var registrationType = registrationTypeInputs.filter(":checked").val();
+
+    if (registrationType === "overnight_attender") {
+        showDaysAttending();
+        showOvernightAccommodations();
+    } else if (registrationType === "day_attender") {
+        showDaysAttending();
+    }
+}
+
+$(document).ready(function () {
+    hideOvernightAccommodations();
+    hideDaysAttending();
+    showRelevantFormSections();
+    
+    // Trigger age input event
+    // to filter accommodations options
+    $("#id_age").trigger("input");
+});
+
+$("#id_age").on("input", showEligibleAccommodations);
+
+registrationTypeInputs.on("change", showRelevantFormSections);
+
+</script>
+{% endblock extra_js %}
+
+{% block extra_css %}
+<style type="text/css">
+    /*
+    "Bootstrap V4 Simple Checkbox with Animation - No Js"
+    Bootstrap 4.0.0 Snippet by pradeep330
+    https://bootsnipp.com/snippets/j6xjx
+    */
+    @keyframes check {0% {height: 0;width: 0;}
+        25% {height: 0;width: 10px;}
+        50% {height: 20px;width: 10px;}
+    }
+    .checkbox{background-color:#fff;display:inline-block;height:28px;margin:0 .25em;width:28px;border-radius:4px;border:1px solid #ccc;float:right}
+    .checkbox span{display:block;height:28px;position:relative;width:28px;padding:0}
+    .checkbox span:after{-moz-transform:scaleX(-1) rotate(135deg);-ms-transform:scaleX(-1) rotate(135deg);-webkit-transform:scaleX(-1) rotate(135deg);transform:scaleX(-1) rotate(135deg);-moz-transform-origin:left top;-ms-transform-origin:left top;-webkit-transform-origin:left top;transform-origin:left top;border-right:4px solid #fff;border-top:4px solid #fff;content:'';display:block;height:20px;left:3px;position:absolute;top:15px;width:10px}
+    .checkbox span:hover:after{border-color:#999}
+    .checkbox input{display:none}
+    .checkbox input:checked + span:after{-webkit-animation:check .8s;-moz-animation:check .8s;-o-animation:check .8s;animation:check .8s;border-color:#555}
+    .checkbox input:checked + .primary:after{border-color:#2196F3}
+    .list-group-item > .checkbox {
+        margin-right: 0.5rem;
+    }
+</style>
+{% endblock %}
