@@ -7,14 +7,26 @@
     {{ page.title }}
 </h1>
 
-<ul>
-{% for registrant in my_registrants %}
-    <li>
-        <a href="/edit-registrant?registrant_id={{ registrant.id }}" class="btn btn-sm btn-outline-success">Edit</a>
-        {{ registrant }}
-    </li>
-{% endfor %}
-</ul>
-
 {{ page.intro | richtext }}
+
+<table class="table table-sm table-borderless">
+    <thead>
+        <tr>
+            <th>Edit</th>
+            <th>Name</th>
+            <th>Registration type</th>
+            <th>Cost</th>
+        </tr>
+    </thead>
+    {% for registrant in my_registrants %}
+        <tr>
+            <td>
+                <a href="/edit-registrant?registrant_id={{ registrant.id }}" class="btn btn-sm btn-outline-success">Edit</a>
+            </td>
+            <td>{{ registrant }}</td>
+            <td>{{ registrant.registration_type }}</td>
+            <td>${{ registrant.registration_fee }}</td>
+        </tr>
+    {% endfor %}
+</table>
 {% endblock content %}
