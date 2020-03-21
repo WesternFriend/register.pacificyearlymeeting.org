@@ -205,18 +205,23 @@ class EditRegistrantPage(Page):
 
     max_count = 1
 
+    def __init__(self, *args, **kwargs):
+        # Avoid circular dependency
+        from registration.forms import RegistrationForm
+
+        super().__init__(*args, **kwargs)
+
+        self.registration_form = RegistrationForm
+
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request)
         registrant_id = request.GET["registrant_id"]
 
         if registrant_id:
-            # Avoid circular dependency
-            from registration.forms import RegistrationForm
-
             registrant = get_object_or_404(Registrant, pk=registrant_id)
 
             # prepopulate model form with registrant (dictionary)
-            form = RegistrationForm(
+            form = self.registration_form(
                 instance=registrant,
             )
 
@@ -231,9 +236,32 @@ class EditRegistrantPage(Page):
             registrant = get_object_or_404(Registrant, pk=registrant_id)
 
             # Make sure request user is authorized to edit registrant
+            # TODO: move this authorization check into the get_context method
+            # Throwing an authorization exception from that method should be sufficient
+            # also, try to see if the authorization check can be a model method
             if request.user.id is not registrant.user.id:
                 # TODO: make this error page a bit more user friendly
                 # e.g. by rendering it in the base.html
                 return HttpResponse('Unauthorized', status=401)
+
+            # Check if form was submitted
+            if request.method == "POST":
+                registration_form = self.registration_form(
+                    request.POST or None,
+                    instance=registrant
+                )
+
+                if registration_form.is_valid():
+                    registration_form.save()
+
+                    messages.success(
+                        request, 'Registration saved successfully!')
+
+                    # Redirect to "My registrants" page on success
+                    my_registrants = MyRegistrantsPage.objects.get()
+
+                    return redirect(my_registrants.get_url())
+                else:
+                    self.registration_form = registration_form
 
         return super().serve(request)
