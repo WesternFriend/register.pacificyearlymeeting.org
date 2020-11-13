@@ -437,7 +437,7 @@ testing = ["pytest (>=3.5,<3.7.3 || >3.7.3)", "pytest-checkdocs (>=1.2.3)", "pyt
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "46189284b1543d8d7bfbbe93eecbc714df1560d530acf1d3f056e0821b58a3ff"
+content-hash = "0c9d45af795986a4ee566c267309c2cb3f9b1d47bda0490148a320685bc0ea61"
 
 [metadata.files]
 anyascii = [
