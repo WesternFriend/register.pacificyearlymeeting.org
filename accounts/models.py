@@ -1,6 +1,5 @@
-from authtools.models import AbstractEmailUser
+from django.contrib.auth.models import AbstractUser
 
 
-class User(AbstractEmailUser):
-    def get_username(self):
-        return self.email
+class User(AbstractUser):
+    pass
