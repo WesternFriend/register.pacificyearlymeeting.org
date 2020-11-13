@@ -130,3 +130,5 @@ dmypy.json
 
 # Django collected staticfiles
 /static/
+
+.vscode/
