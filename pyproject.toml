@@ -8,7 +8,6 @@ license = "AGPL-3.0-or-later"
 [tool.poetry.dependencies]
 python = "^3.7"
 wagtail = "^2.7"
-django-authtools = "^1.7.0"
 django-registration = "^3.0.1"
 django-crispy-forms = "^1.8.1"
 wagtailfontawesome = "^1.1.4"
