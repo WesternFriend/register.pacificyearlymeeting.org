@@ -58,7 +58,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'authtools',
     'crispy_forms',
     'wagtailfontawesome',
 ]
